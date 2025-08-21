@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi Calculator Website</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
+    h1 { text-align: center; }
+    .calculator { background: white; padding: 20px; margin: 20px auto; border-radius: 8px; max-width: 500px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input, button { padding: 10px; margin: 5px; width: calc(100% - 20px); }
+    button { background: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:hover { background: #45a049; }
+  </style>
+</head>
+<body>
+  <h1>Multi Calculator Website</h1>
+
+  <div class="calculator">
+    <h2>Basic Calculator</h2>
+    <input type="text" id="calc" placeholder="Enter expression e.g. 5+3*2">
+    <button onclick="document.getElementById('calcResult').innerText = eval(document.getElementById('calc').value)">Calculate</button>
+    <p>Result: <span id="calcResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>Age Calculator</h2>
+    <input type="date" id="dob">
+    <button onclick="calcAge()">Calculate Age</button>
+    <p>Your Age: <span id="ageResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>BMI Calculator</h2>
+    <input type="number" id="weight" placeholder="Weight in kg">
+    <input type="number" id="height" placeholder="Height in cm">
+    <button onclick="calcBMI()">Calculate BMI</button>
+    <p>BMI: <span id="bmiResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>EMI Calculator</h2>
+    <input type="number" id="loan" placeholder="Loan Amount">
+    <input type="number" id="rate" placeholder="Interest Rate (%)">
+    <input type="number" id="time" placeholder="Time in years">
+    <button onclick="calcEMI()">Calculate EMI</button>
+    <p>Monthly EMI: <span id="emiResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>GST Calculator</h2>
+    <input type="number" id="amount" placeholder="Amount">
+    <input type="number" id="gstRate" placeholder="GST Rate (%)">
+    <button onclick="calcGST()">Calculate GST</button>
+    <p>Total with GST: <span id="gstResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>SIP Calculator</h2>
+    <input type="number" id="sipAmount" placeholder="Monthly Investment">
+    <input type="number" id="sipRate" placeholder="Expected Return (%)">
+    <input type="number" id="sipTime" placeholder="Time in years">
+    <button onclick="calcSIP()">Calculate SIP</button>
+    <p>Maturity Value: <span id="sipResult"></span></p>
+  </div>
+
+  <div class="calculator">
+    <h2>Percentage Calculator</h2>
+    <input type="number" id="total" placeholder="Total">
+    <input type="number" id="part" placeholder="Part">
+    <button onclick="calcPercentage()">Calculate Percentage</button>
+    <p>Percentage: <span id="percentResult"></span>%</p>
+  </div>
+
+  <script>
+    function calcAge() {
+      let dob = new Date(document.getElementById('dob').value);
+      let diff = Date.now() - dob.getTime();
+      let age = new Date(diff);
+      document.getElementById('ageResult').innerText = Math.abs(age.getUTCFullYear() - 1970);
+    }
+
+    function calcBMI() {
+      let w = document.getElementById('weight').value;
+      let h = document.getElementById('height').value / 100;
+      let bmi = (w / (h*h)).toFixed(2);
+      document.getElementById('bmiResult').innerText = bmi;
+    }
+
+    function calcEMI() {
+      let P = document.getElementById('loan').value;
+      let R = document.getElementById('rate').value / 12 / 100;
+      let N = document.getElementById('time').value * 12;
+      let emi = (P * R * Math.pow(1+R, N)) / (Math.pow(1+R, N)-1);
+      document.getElementById('emiResult').innerText = emi.toFixed(2);
+    }
+
+    function calcGST() {
+      let amt = parseFloat(document.getElementById('amount').value);
+      let rate = parseFloat(document.getElementById('gstRate').value);
+      let total = amt + (amt * rate / 100);
+      document.getElementById('gstResult').innerText = total.toFixed(2);
+    }
+
+    function calcSIP() {
+      let P = parseFloat(document.getElementById('sipAmount').value);
+      let R = parseFloat(document.getElementById('sipRate').value) / 100 / 12;
+      let N = parseInt(document.getElementById('sipTime').value) * 12;
+      let futureValue = P * ((Math.pow(1+R, N)-1)/R) * (1+R);
+      document.getElementById('sipResult').innerText = futureValue.toFixed(2);
+    }
+
+    function calcPercentage() {
+      let total = document.getElementById('total').value;
+      let part = document.getElementById('part').value;
+      let percent = (part/total) * 100;
+      document.getElementById('percentResult').innerText = percent.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>

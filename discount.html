@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator - Multi Calculator Pro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav {
+            background: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </nav>
+
+    <section>
+        <h1>Discount Calculator</h1>
+        <p>Enter price and discount percentage to calculate final price.</p>
+        <input type="number" id="price" placeholder="Original Price">
+        <input type="number" id="discount" placeholder="Discount (%)">
+        <br>
+        <button onclick="calculateDiscount()">Calculate</button>
+        <p id="result"></p>
+    </section>
+
+    <script>
+        function calculateDiscount() {
+            let price = parseFloat(document.getElementById("price").value);
+            let discount = parseFloat(document.getElementById("discount").value);
+            if(price > 0 && discount >= 0){
+                let discountAmount = (price * discount) / 100;
+                let finalPrice = price - discountAmount;
+                document.getElementById("result").innerText = 
+                    "Discount: ₹" + discountAmount.toFixed(2) + " | Final Price: ₹" + finalPrice.toFixed(2);
+            } else {
+                document.getElementById("result").innerText = "Please enter valid values.";
+            }
+        }
+    </script>
+</body>
+</html>

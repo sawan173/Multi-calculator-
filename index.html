@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1><i class="fa-solid fa-calculator"></i> Multi Calculator</h1>
+    <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+  </header>
+
+  <nav>
+    <a href="#percentage"><i class="fa-solid fa-percent"></i> Percentage</a>
+    <a href="#bmi"><i class="fa-solid fa-heart-pulse"></i> BMI</a>
+    <a href="#emi"><i class="fa-solid fa-building-columns"></i> EMI</a>
+    <a href="#age"><i class="fa-solid fa-user-clock"></i> Age</a>
+    <a href="#discount"><i class="fa-solid fa-tags"></i> Discount</a>
+    <a href="#gst"><i class="fa-solid fa-receipt"></i> GST</a>
+    <a href="#unit"><i class="fa-solid fa-ruler"></i> Unit</a>
+    <a href="#cgpa"><i class="fa-solid fa-graduation-cap"></i> CGPA</a>
+  </nav>
+
+  <main>
+    <section id="percentage" class="card">
+      <h2>Percentage Calculator</h2>
+      <input type="number" id="part" placeholder="Part value">
+      <input type="number" id="total" placeholder="Total value">
+      <button onclick="calcPercentage()">Calculate</button>
+      <p id="percentageResult"></p>
+    </section>
+
+    <section id="bmi" class="card">
+      <h2>BMI Calculator</h2>
+      <input type="number" id="weight" placeholder="Weight (kg)">
+      <input type="number" id="height" placeholder="Height (m)">
+      <button onclick="calcBMI()">Calculate</button>
+      <p id="bmiResult"></p>
+    </section>
+
+    <section id="emi" class="card">
+      <h2>EMI Calculator</h2>
+      <input type="number" id="loan" placeholder="Loan Amount">
+      <input type="number" id="rate" placeholder="Interest Rate %">
+      <input type="number" id="time" placeholder="Time (years)">
+      <button onclick="calcEMI()">Calculate</button>
+      <p id="emiResult"></p>
+    </section>
+
+    <section id="age" class="card">
+      <h2>Age Calculator</h2>
+      <input type="date" id="dob">
+      <button onclick="calcAge()">Calculate</button>
+      <p id="ageResult"></p>
+    </section>
+
+    <section id="discount" class="card">
+      <h2>Discount Calculator</h2>
+      <input type="number" id="price" placeholder="Original Price">
+      <input type="number" id="discountRate" placeholder="Discount %">
+      <button onclick="calcDiscount()">Calculate</button>
+      <p id="discountResult"></p>
+    </section>
+
+    <section id="gst" class="card">
+      <h2>GST Calculator</h2>
+      <input type="number" id="amount" placeholder="Amount">
+      <input type="number" id="gstRate" placeholder="GST %">
+      <button onclick="calcGST()">Calculate</button>
+      <p id="gstResult"></p>
+    </section>
+
+    <section id="unit" class="card">
+      <h2>Unit Converter (cm → m)</h2>
+      <input type="number" id="cm" placeholder="Centimeters">
+      <button onclick="convertUnit()">Convert</button>
+      <p id="unitResult"></p>
+    </section>
+
+    <section id="cgpa" class="card">
+      <h2>CGPA Calculator</h2>
+      <input type="number" id="marks1" placeholder="Subject 1 Marks">
+      <input type="number" id="marks2" placeholder="Subject 2 Marks">
+      <input type="number" id="marks3" placeholder="Subject 3 Marks">
+      <button onclick="calcCGPA()">Calculate</button>
+      <p id="cgpaResult"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,214 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multi Calculator</title>
+  <title>Multi Calculator Pro</title>
 
-  <!-- ✅ Google Search Console Verification -->
-  <meta name="google-site-verification" content="YAHAN_APNA_SEARCH_CONSOLE_CODE_DALO" />
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="YOUR_SEARCH_CONSOLE_CODE_HERE" />
 
-  <!-- ✅ Google Analytics -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');  // ← Yahaan apna Analytics ID dalo
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      transition: background 0.4s, color 0.4s;
-    }
-    .navbar {
-      background: rgba(30, 58, 138, 0.8);
-      backdrop-filter: blur(8px);
-      transition: background 0.4s;
-    }
-    .navbar-brand, .nav-link {
-      color: #fff !important;
-      font-weight: 600;
+      color: #222;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* Hero Section with Background Image + Gradient */
+    /* Background with gradient overlay */
     .hero {
-      position: relative;
-      text-align: center;
-      padding: 100px 20px;
-      color: white;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://picsum.photos/1920/1080?blur=3') center/cover no-repeat;
-      filter: brightness(0.6) blur(3px);
-      z-index: -2;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(-45deg, rgba(30,58,138,0.7), rgba(37,99,235,0.7), rgba(59,130,246,0.7), rgba(29,78,216,0.7));
-      background-size: 400% 400%;
-      animation: gradientMove 8s ease infinite;
-      z-index: -1;
-    }
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .card {
-      transition: 0.3s;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      background: #ffffff;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      padding: 20px 0;
-      text-align: center;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Dark Mode */
-    .dark-mode {
-      background: #1f2937;
-      color: #f3f4f6;
-    }
-    .dark-mode .navbar {
-      background: rgba(17, 24, 39, 0.9);
-    }
-    .dark-mode .hero::before {
-      filter: brightness(0.4) blur(3px);
-    }
-    .dark-mode .hero::after {
-      background: linear-gradient(-45deg, rgba(17,24,39,0.8), rgba(31,41,55,0.8), rgba(55,65,81,0.8), rgba(31,41,55,0.8));
-      animation: gradientMove 8s ease infinite;
-    }
-    .dark-mode footer {
-      background: #000;
-      color: #9ca3af;
-    }
-    .dark-mode .card {
-      background: #374151;
-      color: #f3f4f6;
-      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
-    }
-
-    /* Dark Mode Toggle Button */
-    .dark-toggle {
-      background: none;
-      border: 2px solid white;
-      border-radius: 20px;
-      padding: 5px 15px;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .dark-toggle:hover {
-      background: white;
-      color: #1e3a8a;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#">MultiCalculator</a>
-      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        ☰
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Tools</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        </ul>
-        <!-- Dark Mode Toggle -->
-        <button class="dark-toggle ms-3" onclick="toggleDarkMode()">🌙 Dark</button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Welcome to MultiCalculator</h1>
-    <p>All-in-one calculators for your daily needs</p>
-  </section>
-
-  <!-- Tools Section -->
-  <div class="container my-5">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card p-4 text-center">
-          <h4>📅 Age Calculator</h4>
-          <p>Calculate your exact age in seconds.</p>
-          <a href="#" class="btn btn-primary">Use Now</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-4 text-center">
-          <h4>💰 Loan Calculator</h4>
-          <p>Plan your EMIs smartly with our tool.</p>
-          <a href="#" class="btn btn-primary">Use Now</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-4 text-center">
-          <h4>⚖️ BMI Calculator</h4>
-          <p>Check your Body Mass Index instantly.</p>
-          <a href="#" class="btn btn-primary">Use Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 MultiCalculator | All Rights Reserved</p>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Dark Mode Script -->
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-
-    // Animation delay for cards
-    document.querySelectorAll('.card').forEach((card, index) => {
-      card.style.animationDelay = (index * 0.3) + "s";
-    });
-  </script>
-</body>
-</html>
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      t

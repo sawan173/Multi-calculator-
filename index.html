@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi Calculator Pro</title>
+
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="XYZ123abc456-verify-code" />
+
+  <!-- ✅ Google Analytics (replace G-XXXXXXXXX with your own ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXX');
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
@@ -25,40 +39,66 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero fade-in">
     <h1>All-in-One Smart Calculator</h1>
     <p>Fast • Simple • Reliable</p>
   </section>
 
   <!-- Calculator Cards -->
   <section class="calculator-section">
-    <div class="card">
-      <img src="assets/bmi.png" alt="BMI Icon">
+
+    <!-- BMI -->
+    <div class="card zoom-in">
+      <div class="icon">
+        <!-- Weight Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 0 24 24" fill="white">
+          <path d="M19 3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2Zm-7 14c-2.76 0-5-2.24-5-5h2a3 3 0 0 0 6 0h2c0 2.76-2.24 5-5 5Z"/>
+        </svg>
+      </div>
       <h2>BMI Calculator</h2>
       <p>Check your body mass index instantly</p>
     </div>
 
-    <div class="card">
-      <img src="assets/age.png" alt="Age Icon">
+    <!-- Age -->
+    <div class="card zoom-in">
+      <div class="icon">
+        <!-- Hourglass Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 0 24 24" fill="white">
+          <path d="M6 2v6h.01L10 12l-3.99 4H6v6h12v-6h-.01L14 12l3.99-4H18V2H6Zm10 2v2.59l-4 4-4-4V4h8ZM8 20v-2.59l4-4 4 4V20H8Z"/>
+        </svg>
+      </div>
       <h2>Age Calculator</h2>
       <p>Find your exact age in years, months, days</p>
     </div>
 
-    <div class="card">
-      <img src="assets/loan.png" alt="Loan Icon">
+    <!-- EMI -->
+    <div class="card zoom-in">
+      <div class="icon">
+        <!-- Money Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 0 24 24" fill="white">
+          <path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9Zm.75 14.5h-1.5v-1.5h1.5v1.5Zm2.24-6.77c-.21.29-.5.53-.86.72-.33.17-.55.29-.65.36-.15.11-.25.24-.31.41-.07.16-.1.38-.1.65v.13h-1.5v-.2c0-.47.08-.85.23-1.14.16-.3.41-.54.76-.75.26-.16.46-.29.59-.39.14-.1.23-.22.28-.36.06-.13.09-.3.09-.5 0-.34-.12-.61-.35-.82-.23-.2-.55-.3-.96-.3-.39 0-.7.11-.93.33-.22.21-.34.52-.34.93h-1.5c0-.61.19-1.12.57-1.53.39-.42.92-.66 1.59-.74V7.5h1.5v.79c.6.09 1.08.33 1.42.71.35.39.52.87.52 1.46 0 .42-.1.78-.29 1.08Z"/>
+        </svg>
+      </div>
       <h2>Loan / EMI Calculator</h2>
       <p>Calculate EMIs with interest in seconds</p>
     </div>
 
-    <div class="card">
-      <img src="assets/percent.png" alt="Percentage Icon">
+    <!-- Percentage -->
+    <div class="card zoom-in">
+      <div class="icon">
+        <!-- Percentage Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 0 24 24" fill="white">
+          <path d="M7.5 4A3.5 3.5 0 1 0 11 7.5 3.5 3.5 0 0 0 7.5 4Zm9 9A3.5 3.5 0 1 0 20 16.5 3.5 3.5 0 0 0 16.5 13ZM5 19l14-14-1.41-1.41L3.59 17.59 5 19Z"/>
+        </svg>
+      </div>
       <h2>Percentage Calculator</h2>
       <p>Quickly calculate percentage values</p>
     </div>
+
   </section>
 
   <!-- Coming Soon -->
-  <section class="coming-soon">
+  <section class="coming-soon slide-up">
     <h2>More Calculators Coming Soon 🚀</h2>
   </section>
 

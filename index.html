@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #f4f7fb;
       scroll-behavior: smooth;
-      background: #fafafa;
     }
 
     /* Navbar */
@@ -31,115 +31,78 @@
       text-decoration: underline;
     }
 
-    /* Hero */
+    /* Hero Section */
     .hero {
-      height: 45vh;
+      height: 40vh;
       background: linear-gradient(135deg, #007BFF, #6f42c1);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
       padding: 20px;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
 
-    /* Calculator menu */
-    .menu {
+    /* Icon Buttons */
+    .icon-container {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
-      margin: 30px 0;
+      padding: 30px;
     }
-    .menu button {
-      width: 130px;
-      height: 130px;
-      border: none;
-      border-radius: 15px;
-      background: #ffffff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .icon-btn {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
       cursor: pointer;
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
+      width: 120px;
+      transition: transform 0.2s ease;
     }
-    .menu button:hover {
+    .icon-btn:hover {
       transform: scale(1.05);
-      background: #f1f1ff;
     }
-    .menu img {
+    .icon-btn img {
       width: 60px;
       height: 60px;
-      margin-bottom: 8px;
     }
-    .menu span {
-      font-size: 14px;
+    .icon-btn p {
+      margin-top: 10px;
       font-weight: bold;
     }
 
-    /* Calculator cards */
+    /* Calculator Popups */
     .calculator {
       display: none;
-      margin: 20px auto;
-      max-width: 500px;
-      padding: 20px;
+      max-width: 400px;
+      margin: 40px auto;
       background: white;
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .calculator h2 {
       margin-bottom: 15px;
     }
-    input {
-      width: 90%;
+    .calculator input {
+      width: 100%;
       padding: 10px;
-      margin: 5px 0;
+      margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    button.calcBtn {
-      margin-top: 10px;
-      padding: 10px 20px;
+    .calculator button {
+      padding: 10px 15px;
       background: #007BFF;
-      color: white;
       border: none;
+      color: white;
       border-radius: 5px;
       cursor: pointer;
     }
-    button.calcBtn:hover {
+    .calculator button:hover {
       background: #0056b3;
-    }
-
-    /* Sections */
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    #about { background: #f9f9f9; }
-    #contact { background: #eef2f3; }
-    #privacy { background: #f9f9f9; }
-
-    /* Contact Form */
-    form {
-      max-width: 500px;
-      margin: auto;
-      text-align: left;
-    }
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
     }
 
     /* Footer */
@@ -148,7 +111,7 @@
       color: white;
       text-align: center;
       padding: 15px;
-      margin-top: 30px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -165,102 +128,60 @@
   <!-- Hero -->
   <div class="hero" id="home">
     <h1>Multi Calculator Pro</h1>
-    <p>Select a calculator below 👇</p>
+    <p>Tap an icon to use a calculator</p>
   </div>
 
-  <!-- Calculator Menu -->
-  <div class="menu">
-    <button onclick="showCalc('bmiCalc')">
+  <!-- Icon Buttons -->
+  <div class="icon-container">
+    <div class="icon-btn" onclick="showCalc('bmi')">
       <img src="icons/bmi.png" alt="BMI">
-      <span>BMI</span>
-    </button>
-    <button onclick="showCalc('ageCalc')">
+      <p>BMI</p>
+    </div>
+    <div class="icon-btn" onclick="showCalc('age')">
       <img src="icons/age.png" alt="Age">
-      <span>Age</span>
-    </button>
-    <button onclick="showCalc('gstCalc')">
+      <p>Age</p>
+    </div>
+    <div class="icon-btn" onclick="showCalc('gst')">
       <img src="icons/gst.png" alt="GST">
-      <span>GST</span>
-    </button>
-    <button onclick="showCalc('discountCalc')">
+      <p>GST</p>
+    </div>
+    <div class="icon-btn" onclick="showCalc('discount')">
       <img src="icons/discount.png" alt="Discount">
-      <span>Discount</span>
-    </button>
+      <p>Discount</p>
+    </div>
   </div>
 
-  <!-- BMI Calculator -->
-  <div class="calculator" id="bmiCalc">
+  <!-- Calculators -->
+  <div id="bmi" class="calculator">
     <h2>📝 BMI Calculator</h2>
     <input type="number" id="weight" placeholder="Weight (kg)">
     <input type="number" id="height" placeholder="Height (cm)">
-    <button class="calcBtn" onclick="calculateBMI()">Calculate</button>
+    <button onclick="calculateBMI()">Calculate</button>
     <p id="bmiResult"></p>
   </div>
 
-  <!-- Age Calculator -->
-  <div class="calculator" id="ageCalc">
+  <div id="age" class="calculator">
     <h2>🎂 Age Calculator</h2>
     <input type="date" id="dob">
-    <button class="calcBtn" onclick="calculateAge()">Calculate</button>
+    <button onclick="calculateAge()">Calculate</button>
     <p id="ageResult"></p>
   </div>
 
-  <!-- GST Calculator -->
-  <div class="calculator" id="gstCalc">
+  <div id="gst" class="calculator">
     <h2>💰 GST Calculator</h2>
     <input type="number" id="amount" placeholder="Amount">
     <input type="number" id="gstRate" placeholder="GST Rate %">
-    <button class="calcBtn" onclick="calculateGST()">Calculate</button>
+    <button onclick="calculateGST()">Calculate</button>
     <p id="gstResult"></p>
   </div>
 
-  <!-- Discount Calculator -->
-  <div class="calculator" id="discountCalc">
+  <div id="discount" class="calculator">
     <h2>🏷️ Discount Calculator</h2>
     <input type="number" id="price" placeholder="Original Price">
     <input type="number" id="discount" placeholder="Discount %">
-    <button class="calcBtn" onclick="calculateDiscount()">Calculate</button>
+    <button onclick="calculateDiscount()">Calculate</button>
     <p id="discountResult"></p>
   </div>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>ℹ️ About Us</h2>
-    <p style="max-width:600px; margin:auto; font-size:18px; line-height:1.6;">
-      Welcome to <b>Multi Calculator Pro</b> – your all-in-one solution for everyday calculations.
-      From BMI to Age, GST to Discount, our free calculators are designed to make your life easier.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>📞 Contact Us</h2>
-    <p>Have questions or suggestions? Reach out to us!</p>
-    <form>
-      <label>Name</label><br>
-      <input type="text" placeholder="Enter your name"><br>
-      
-      <label>Email</label><br>
-      <input type="email" placeholder="Enter your email"><br>
-      
-      <label>Message</label><br>
-      <textarea placeholder="Write your message"></textarea><br>
-      
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <!-- Privacy Policy -->
-  <section id="privacy">
-    <h2>🔒 Privacy Policy</h2>
-    <p style="max-width:700px; margin:auto; font-size:16px; line-height:1.6;">
-      At <b>Multi Calculator Pro</b>, your privacy is important to us.<br><br>
-      We do not collect personal information directly. However, third-party services like 
-      Google Analytics may collect anonymous usage data to help us improve the site.<br><br>
-      Our site may use cookies to enhance your browsing experience.<br><br>
-      By using this website, you agree to our privacy policy.
-    </p>
-  </section>
 
   <!-- Footer -->
   <footer>
@@ -270,9 +191,8 @@
   <!-- JavaScript -->
   <script>
     function showCalc(id) {
-      let calcs = document.querySelectorAll(".calculator");
-      calcs.forEach(c => c.style.display = "none");
-      document.getElementById(id).style.display = "block";
+      document.querySelectorAll('.calculator').forEach(calc => calc.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
       window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
     }
 
@@ -329,6 +249,5 @@
       }
     }
   </script>
-
 </body>
 </html>

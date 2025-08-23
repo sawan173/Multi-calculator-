@@ -4,37 +4,302 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi Calculator Pro</title>
-  <meta name="description" content="Free online calculators like BMI, Age and more. Simple, fast and accurate.">
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: linear-gradient(270deg, #6a11cb, #2575fc, #ff6a00);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 50px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      width: 220px;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.4s;
+      backdrop-filter: blur(10px);
+      animation: fadeUp 1s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: 0 0 25px #ffd700;
+    }
+
+    .card i {
+      font-size: 50px;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    .card:hover i {
+      transform: scale(1.2) rotate(10deg);
+      color: #ffd700;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.7);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: #fff;
+      color: #000;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      animation: scaleUp 0.4s ease;
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #2575fc;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      box-shadow: 0 0 15px #6a11cb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.6);
+      margin-top: 30px;
+      animation: fadeIn 2s ease;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>Multi Calculator Pro</h1>
+    Multi Calculator Pro
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
     </nav>
   </header>
 
-  <main class="grid">
-    <a href="bmi.html" class="card">BMI Calculator</a>
-    <a href="age.html" class="card">Age Calculator</a>
-  </main>
+  <div class="container">
+    <div class="card" onclick="openModal('bmiModal')">
+      <i class="fas fa-weight"></i>
+      <h3>BMI Calculator</h3>
+    </div>
+    <div class="card" onclick="openModal('ageModal')">
+      <i class="fas fa-hourglass-half"></i>
+      <h3>Age Calculator</h3>
+    </div>
+    <div class="card" onclick="openModal('loanModal')">
+      <i class="fas fa-hand-holding-usd"></i>
+      <h3>Loan / EMI Calculator</h3>
+    </div>
+    <div class="card" onclick="openModal('percentageModal')">
+      <i class="fas fa-percent"></i>
+      <h3>Percentage Calculator</h3>
+    </div>
+  </div>
+
+  <!-- BMI Modal -->
+  <div id="bmiModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bmiModal')">&times;</span>
+      <h2>BMI Calculator</h2>
+      <input type="number" id="weight" placeholder="Enter weight (kg)">
+      <input type="number" id="height" placeholder="Enter height (cm)">
+      <button onclick="calculateBMI()">Calculate</button>
+      <p id="bmiResult"></p>
+    </div>
+  </div>
+
+  <!-- Age Modal -->
+  <div id="ageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('ageModal')">&times;</span>
+      <h2>Age Calculator</h2>
+      <input type="date" id="dob">
+      <button onclick="calculateAge()">Calculate</button>
+      <p id="ageResult"></p>
+    </div>
+  </div>
+
+  <!-- Loan Modal -->
+  <div id="loanModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('loanModal')">&times;</span>
+      <h2>Loan / EMI Calculator</h2>
+      <input type="number" id="loanAmount" placeholder="Loan Amount">
+      <input type="number" id="interestRate" placeholder="Interest Rate (%)">
+      <input type="number" id="loanTenure" placeholder="Tenure (years)">
+      <button onclick="calculateEMI()">Calculate</button>
+      <p id="loanResult"></p>
+    </div>
+  </div>
+
+  <!-- Percentage Modal -->
+  <div id="percentageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('percentageModal')">&times;</span>
+      <h2>Percentage Calculator</h2>
+      <input type="number" id="totalMarks" placeholder="Total Marks">
+      <input type="number" id="obtainedMarks" placeholder="Obtained Marks">
+      <button onclick="calculatePercentage()">Calculate</button>
+      <p id="percentageResult"></p>
+    </div>
+  </div>
 
   <footer>
-    <p>© 2025 Multi Calculator Pro</p>
+    &copy; 2025 Multi Calculator Pro | All Rights Reserved
   </footer>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function calculateBMI() {
+      let w = document.getElementById("weight").value;
+      let h = document.getElementById("height").value / 100;
+      if (w && h) {
+        let bmi = (w / (h * h)).toFixed(2);
+        document.getElementById("bmiResult").innerText = "Your BMI is " + bmi;
+      }
+    }
+
+    function calculateAge() {
+      let dob = new Date(document.getElementById("dob").value);
+      if (!isNaN(dob)) {
+        let diff = Date.now() - dob.getTime();
+        let ageDate = new Date(diff);
+        let age = Math.abs(ageDate.getUTCFullYear() - 1970);
+        document.getElementById("ageResult").innerText = "Your Age is " + age;
+      }
+    }
+
+    function calculateEMI() {
+      let P = document.getElementById("loanAmount").value;
+      let R = document.getElementById("interestRate").value / 12 / 100;
+      let N = document.getElementById("loanTenure").value * 12;
+      if (P && R && N) {
+        let EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        document.getElementById("loanResult").innerText = "Your EMI is ₹" + EMI.toFixed(2);
+      }
+    }
+
+    function calculatePercentage() {
+      let total = document.getElementById("totalMarks").value;
+      let obtained = document.getElementById("obtainedMarks").value;
+      if (total && obtained) {
+        let percentage = (obtained / total) * 100;
+        document.getElementById("percentageResult").innerText = "Percentage: " + percentage.toFixed(2) + "%";
+      }
+    }
+  </script>
 </body>
 </html>

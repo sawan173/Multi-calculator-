@@ -8,12 +8,31 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
+      scroll-behavior: smooth;
     }
 
-    /* Hero Section */
+    /* Navbar */
+    nav {
+      background: #007BFF;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero */
     .hero {
-      height: 50vh;
+      height: 60vh;
       background: linear-gradient(135deg, #007BFF, #6f42c1);
       display: flex;
       flex-direction: column;
@@ -23,72 +42,220 @@
       color: white;
       padding: 20px;
     }
-
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
-
     .hero p {
       font-size: 1.2rem;
+      max-width: 600px;
     }
 
-    /* Calculator Cards */
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
+    /* Card style */
     .card {
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 20px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
+      text-align: center;
     }
-
     .card h2 {
       margin: 0 0 10px;
     }
 
-    .card a {
-      text-decoration: none;
-      color: #007BFF;
-      font-weight: bold;
+    /* Sections */
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    #about { background: #f9f9f9; }
+    #contact { background: #eef2f3; }
+    #privacy { background: #f9f9f9; }
+
+    /* Contact Form */
+    form {
+      max-width: 500px;
+      margin: auto;
+      text-align: left;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      background: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <div class="hero">
+  <!-- Navbar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#privacy">Privacy Policy</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" id="home">
     <h1>Welcome to Multi Calculator Pro</h1>
     <p>All-in-one free calculators for your daily needs</p>
   </div>
 
-  <!-- Calculator Links -->
-  <div class="container">
-    <div class="card">
-      <h2>📝 BMI Calculator</h2>
-      <a href="bmi.html">Open Calculator</a>
-    </div>
-
-    <div class="card">
-      <h2>🎂 Age Calculator</h2>
-      <a href="age.html">Open Calculator</a>
-    </div>
-
-    <div class="card">
-      <h2>💰 GST Calculator</h2>
-      <a href="gst.html">Open Calculator</a>
-    </div>
-
-    <div class="card">
-      <h2>🏷️ Discount Calculator</h2>
-      <a href="discount.html">Open Calculator</a>
-    </div>
+  <!-- Example Calculators -->
+  <div class="card">
+    <h2>📝 BMI Calculator</h2>
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <button onclick="calculateBMI()">Calculate</button>
+    <p id="bmiResult"></p>
   </div>
+
+  <div class="card">
+    <h2>🎂 Age Calculator</h2>
+    <input type="date" id="dob">
+    <button onclick="calculateAge()">Calculate</button>
+    <p id="ageResult"></p>
+  </div>
+
+  <div class="card">
+    <h2>💰 GST Calculator</h2>
+    <input type="number" id="amount" placeholder="Amount">
+    <input type="number" id="gstRate" placeholder="GST Rate %">
+    <button onclick="calculateGST()">Calculate</button>
+    <p id="gstResult"></p>
+  </div>
+
+  <div class="card">
+    <h2>🏷️ Discount Calculator</h2>
+    <input type="number" id="price" placeholder="Original Price">
+    <input type="number" id="discount" placeholder="Discount %">
+    <button onclick="calculateDiscount()">Calculate</button>
+    <p id="discountResult"></p>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>ℹ️ About Us</h2>
+    <p style="max-width:600px; margin:auto; font-size:18px; line-height:1.6;">
+      Welcome to <b>Multi Calculator Pro</b> – your all-in-one solution for everyday calculations.
+      From BMI to Age, GST to Discount, our free calculators are designed to make your life easier.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>📞 Contact Us</h2>
+    <p>Have questions or suggestions? Reach out to us!</p>
+    <form>
+      <label>Name</label><br>
+      <input type="text" placeholder="Enter your name"><br>
+      
+      <label>Email</label><br>
+      <input type="email" placeholder="Enter your email"><br>
+      
+      <label>Message</label><br>
+      <textarea placeholder="Write your message"></textarea><br>
+      
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Privacy Policy -->
+  <section id="privacy">
+    <h2>🔒 Privacy Policy</h2>
+    <p style="max-width:700px; margin:auto; font-size:16px; line-height:1.6;">
+      At <b>Multi Calculator Pro</b>, your privacy is important to us.<br><br>
+      We do not collect personal information directly. However, third-party services like 
+      Google Analytics may collect anonymous usage data to help us improve the site.<br><br>
+      Our site may use cookies to enhance your browsing experience.<br><br>
+      By using this website, you agree to our privacy policy.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Multi Calculator Pro | All Rights Reserved
+  </footer>
+
+  <!-- JavaScript for calculators -->
+  <script>
+    function calculateBMI() {
+      let weight = document.getElementById("weight").value;
+      let height = document.getElementById("height").value / 100;
+      if (weight > 0 && height > 0) {
+        let bmi = (weight / (height * height)).toFixed(2);
+        document.getElementById("bmiResult").innerText = "Your BMI is " + bmi;
+      } else {
+        document.getElementById("bmiResult").innerText = "Please enter valid values.";
+      }
+    }
+
+    function calculateAge() {
+      let dob = new Date(document.getElementById("dob").value);
+      if (!dob.getTime()) {
+        document.getElementById("ageResult").innerText = "Please select your date of birth.";
+        return;
+      }
+      let today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      let m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+      document.getElementById("ageResult").innerText = "Your age is " + age + " years.";
+    }
+
+    function calculateGST() {
+      let amount = document.getElementById("amount").value;
+      let gstRate = document.getElementById("gstRate").value;
+      if (amount > 0 && gstRate >= 0) {
+        let gst = (amount * gstRate) / 100;
+        let total = parseFloat(amount) + gst;
+        document.getElementById("gstResult").innerText =
+          "GST: " + gst.toFixed(2) + " | Total: " + total.toFixed(2);
+      } else {
+        document.getElementById("gstResult").innerText = "Please enter valid values.";
+      }
+    }
+
+    function calculateDiscount() {
+      let price = document.getElementById("price").value;
+      let discount = document.getElementById("discount").value;
+      if (price > 0 && discount >= 0) {
+        let discountAmount = (price * discount) / 100;
+        let finalPrice = price - discountAmount;
+        document.getElementById("discountResult").innerText =
+          "You save: " + discountAmount.toFixed(2) +
+          " | Final Price: " + finalPrice.toFixed(2);
+      } else {
+        document.getElementById("discountResult").innerText = "Please enter valid values.";
+      }
+    }
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator - Multi Calculator Pro</title>
+  <meta name="description" content="Check your Body Mass Index (BMI) instantly with our free BMI calculator.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>BMI Calculator</h1>
+    <a href="index.html">← Back to Home</a>
+  </header>
+  <main>
+    <form onsubmit="calculateBMI(event)">
+      <label>Weight (kg): <input type="number" id="weight" required></label>
+      <label>Height (cm): <input type="number" id="height" required></label>
+      <button type="submit">Calculate</button>
+    </form>
+    <p id="bmiResult"></p>
+  </main>
+  <footer>© 2025 Multi Calculator Pro</footer>
+</body>
+</html>

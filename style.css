@@ -1,53 +1,131 @@
-/* Reset */
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  pointer-events: auto !important; /* force enable clicks */
+  pointer-events: auto !important; /* Fix click issue */
 }
 
-/* Body styling */
 body {
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: #f4f6f9;
   color: #333;
+  line-height: 1.6;
 }
 
 /* Navbar */
-header {
+.navbar {
   background: #0073e6;
-  padding: 10px;
-  position: relative;
-  z-index: 10 !important;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav-links {
   list-style: none;
   display: flex;
-  justify-content: center;
+  gap: 20px;
 }
 
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
+.nav-links li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-/* Main content */
-main {
-  padding: 20px;
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #005bb5;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Main Section */
+.title {
   text-align: center;
+  margin: 20px;
+  font-size: 28px;
+  color: #222;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.card button {
+  padding: 10px 15px;
+  background: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: #005bb5;
+}
+
+.card p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #444;
 }
 
 /* Footer */
 footer {
+  text-align: center;
+  padding: 15px;
   background: #0073e6;
   color: white;
-  text-align: center;
-  padding: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
 }

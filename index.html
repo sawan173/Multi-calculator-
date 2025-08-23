@@ -8,11 +8,12 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #f8f9fa;
     }
 
     /* Hero Section */
     .hero {
-      height: 60vh;
+      height: 50vh;
       background: linear-gradient(135deg, #007BFF, #6f42c1);
       display: flex;
       flex-direction: column;
@@ -30,21 +31,31 @@
 
     .hero p {
       font-size: 1.2rem;
-      max-width: 600px;
     }
 
-    /* Example card style for calculators */
-    .card {
-      margin: 20px auto;
-      max-width: 500px;
+    /* Calculator Cards */
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
       padding: 20px;
+    }
+
+    .card {
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
     .card h2 {
       margin: 0 0 10px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -56,15 +67,27 @@
     <p>All-in-one free calculators for your daily needs</p>
   </div>
 
-  <!-- Example Calculator Card -->
-  <div class="card">
-    <h2>📝 BMI Calculator</h2>
-    <p>Check your Body Mass Index instantly.</p>
-  </div>
+  <!-- Calculator Links -->
+  <div class="container">
+    <div class="card">
+      <h2>📝 BMI Calculator</h2>
+      <a href="bmi.html">Open Calculator</a>
+    </div>
 
-  <div class="card">
-    <h2>🎂 Age Calculator</h2>
-    <p>Find out your exact age in seconds.</p>
+    <div class="card">
+      <h2>🎂 Age Calculator</h2>
+      <a href="age.html">Open Calculator</a>
+    </div>
+
+    <div class="card">
+      <h2>💰 GST Calculator</h2>
+      <a href="gst.html">Open Calculator</a>
+    </div>
+
+    <div class="card">
+      <h2>🏷️ Discount Calculator</h2>
+      <a href="discount.html">Open Calculator</a>
+    </div>
   </div>
 
 </body>

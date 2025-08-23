@@ -4,263 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi Calculator Pro</title>
-
-  <!-- ✅ Google Search Console Verification -->
-  <meta name="google-site-verification" content="PASTE_YOUR_VERIFICATION_CODE_HERE" />
-
-  <!-- ✅ Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-
   <style>
+    /* ===== RESET ===== */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      scroll-behavior: smooth;
+      background: linear-gradient(135deg,#e3f2fd,#f9f9f9);
+      color:#333;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* Navbar */
+    /* ===== NAVBAR ===== */
     nav {
-      background: #007BFF;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      background:#007BFF;
+      padding:15px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
     }
     nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
     }
-    nav a:hover {
-      text-decoration: underline;
+    nav a:hover {text-decoration:underline;}
+
+    /* ===== HERO ===== */
+    header {
+      text-align:center;
+      padding:50px 20px;
+    }
+    header h1 {
+      font-size:2.5em;
+      color:#007BFF;
+    }
+    header p {
+      font-size:1.2em;
+      margin-top:10px;
     }
 
-    /* Hero Section */
-    .hero {
-      height: 40vh;
-      background: linear-gradient(135deg, #007BFF, #6f42c1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 20px;
+    /* ===== CALCULATOR CARDS ===== */
+    .tools {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap:20px;
+      padding:30px;
+    }
+    .tool {
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      text-align:center;
+      cursor:pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tool img {
+      width:60px;
+      margin-bottom:10px;
+    }
+    .tool:hover {
+      transform: translateY(-5px);
+      box-shadow:0 6px 12px rgba(0,0,0,0.2);
     }
 
-    /* Icon Buttons */
-    .icon-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 30px;
+    /* ===== SECTIONS ===== */
+    section {
+      padding:40px 20px;
+      max-width:900px;
+      margin:auto;
     }
-    .icon-btn {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      cursor: pointer;
-      width: 120px;
-      transition: transform 0.2s ease;
-    }
-    .icon-btn:hover {
-      transform: scale(1.05);
-    }
-    .icon-btn img {
-      width: 60px;
-      height: 60px;
-    }
-    .icon-btn p {
-      margin-top: 10px;
-      font-weight: bold;
+    section h2 {
+      color:#007BFF;
+      margin-bottom:15px;
     }
 
-    /* Calculator Popups */
-    .calculator {
-      display: none;
-      max-width: 400px;
-      margin: 40px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .calculator h2 {
-      margin-bottom: 15px;
-    }
-    .calculator input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .calculator button {
-      padding: 10px 15px;
-      background: #007BFF;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .calculator button:hover {
-      background: #0056b3;
-    }
-
-    /* Footer */
+    /* ===== FOOTER ===== */
     footer {
-      background: #007BFF;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      background:#007BFF;
+      color:white;
+      text-align:center;
+      padding:15px;
+      margin-top:20px;
     }
+
+    /* ===== DARK MODE ===== */
+    .dark {
+      background:#121212;
+      color:#eee;
+    }
+    .dark nav {background:#1f1f1f;}
+    .dark footer {background:#1f1f1f;}
+    .dark .tool {background:#1e1e1e;color:#eee;}
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- ===== NAVBAR ===== -->
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
     <a href="#privacy">Privacy Policy</a>
+    <button onclick="toggleDarkMode()" style="margin-left:auto;background:#fff;color:#007BFF;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">🌙</button>
   </nav>
 
-  <!-- Hero -->
-  <div class="hero" id="home">
+  <!-- ===== HERO ===== -->
+  <header id="home">
     <h1>Multi Calculator Pro</h1>
-    <p>Tap an icon to use a calculator</p>
-  </div>
+    <p>All-in-one online calculators at your fingertips</p>
+  </header>
 
-  <!-- Icon Buttons -->
-  <div class="icon-container">
-    <div class="icon-btn" onclick="showCalc('bmi')">
-      <img src="icons/bmi.png" alt="BMI">
-      <p>BMI</p>
+  <!-- ===== TOOLS ===== -->
+  <div class="tools">
+    <div class="tool" onclick="openCalculator('bmi')">
+      <img src="https://img.icons8.com/color/96/weight.png" alt="BMI">
+      <h3>BMI Calculator</h3>
     </div>
-    <div class="icon-btn" onclick="showCalc('age')">
-      <img src="icons/age.png" alt="Age">
-      <p>Age</p>
+    <div class="tool" onclick="openCalculator('age')">
+      <img src="https://img.icons8.com/color/96/birthday.png" alt="Age">
+      <h3>Age Calculator</h3>
     </div>
-    <div class="icon-btn" onclick="showCalc('gst')">
-      <img src="icons/gst.png" alt="GST">
-      <p>GST</p>
+    <div class="tool" onclick="openCalculator('gst')">
+      <img src="https://img.icons8.com/color/96/tax.png" alt="GST">
+      <h3>GST Calculator</h3>
     </div>
-    <div class="icon-btn" onclick="showCalc('discount')">
-      <img src="icons/discount.png" alt="Discount">
-      <p>Discount</p>
+    <div class="tool" onclick="openCalculator('discount')">
+      <img src="https://img.icons8.com/color/96/discount.png" alt="Discount">
+      <h3>Discount Calculator</h3>
     </div>
   </div>
 
-  <!-- Calculators -->
-  <div id="bmi" class="calculator">
-    <h2>📝 BMI Calculator</h2>
-    <input type="number" id="weight" placeholder="Weight (kg)">
-    <input type="number" id="height" placeholder="Height (cm)">
-    <button onclick="calculateBMI()">Calculate</button>
-    <p id="bmiResult"></p>
-  </div>
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <h2>About</h2>
+    <p>Multi Calculator Pro is a simple and powerful tool that helps you with everyday calculations like BMI, Age, GST, Discounts and more – all in one place!</p>
+  </section>
 
-  <div id="age" class="calculator">
-    <h2>🎂 Age Calculator</h2>
-    <input type="date" id="dob">
-    <button onclick="calculateAge()">Calculate</button>
-    <p id="ageResult"></p>
-  </div>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>If you have any feedback or suggestions, feel free to reach out.</p>
+    <p>Email: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+  </section>
 
-  <div id="gst" class="calculator">
-    <h2>💰 GST Calculator</h2>
-    <input type="number" id="amount" placeholder="Amount">
-    <input type="number" id="gstRate" placeholder="GST Rate %">
-    <button onclick="calculateGST()">Calculate</button>
-    <p id="gstResult"></p>
-  </div>
+  <!-- ===== PRIVACY POLICY ===== -->
+  <section id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>We respect your privacy. We do not collect personal information directly. However, third-party tools like Google Analytics may collect anonymous data for improving the service.</p>
+  </section>
 
-  <div id="discount" class="calculator">
-    <h2>🏷️ Discount Calculator</h2>
-    <input type="number" id="price" placeholder="Original Price">
-    <input type="number" id="discount" placeholder="Discount %">
-    <button onclick="calculateDiscount()">Calculate</button>
-    <p id="discountResult"></p>
-  </div>
-
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 Multi Calculator Pro | All Rights Reserved
+    &copy; 2025 Multi Calculator Pro. All rights reserved.
   </footer>
 
-  <!-- JavaScript -->
+  <!-- ===== SCRIPT ===== -->
   <script>
-    function showCalc(id) {
-      document.querySelectorAll('.calculator').forEach(calc => calc.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-      window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
+    // Dark Mode Toggle
+    function toggleDarkMode(){
+      document.body.classList.toggle("dark");
     }
 
-    function calculateBMI() {
-      let weight = document.getElementById("weight").value;
-      let height = document.getElementById("height").value / 100;
-      if (weight > 0 && height > 0) {
-        let bmi = (weight / (height * height)).toFixed(2);
-        document.getElementById("bmiResult").innerText = "Your BMI is " + bmi;
-      } else {
-        document.getElementById("bmiResult").innerText = "Please enter valid values.";
-      }
-    }
-
-    function calculateAge() {
-      let dob = new Date(document.getElementById("dob").value);
-      if (!dob.getTime()) {
-        document.getElementById("ageResult").innerText = "Please select your date of birth.";
-        return;
-      }
-      let today = new Date();
-      let age = today.getFullYear() - dob.getFullYear();
-      let m = today.getMonth() - dob.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-        age--;
-      }
-      document.getElementById("ageResult").innerText = "Your age is " + age + " years.";
-    }
-
-    function calculateGST() {
-      let amount = document.getElementById("amount").value;
-      let gstRate = document.getElementById("gstRate").value;
-      if (amount > 0 && gstRate >= 0) {
-        let gst = (amount * gstRate) / 100;
-        let total = parseFloat(amount) + gst;
-        document.getElementById("gstResult").innerText =
-          "GST: " + gst.toFixed(2) + " | Total: " + total.toFixed(2);
-      } else {
-        document.getElementById("gstResult").innerText = "Please enter valid values.";
-      }
-    }
-
-    function calculateDiscount() {
-      let price = document.getElementById("price").value;
-      let discount = document.getElementById("discount").value;
-      if (price > 0 && discount >= 0) {
-        let discountAmount = (price * discount) / 100;
-        let finalPrice = price - discountAmount;
-        document.getElementById("discountResult").innerText =
-          "You save: " + discountAmount.toFixed(2) +
-          " | Final Price: " + finalPrice.toFixed(2);
-      } else {
-        document.getElementById("discountResult").innerText = "Please enter valid values.";
-      }
+    // Open Calculator (dummy for now)
+    function openCalculator(type){
+      alert("Opening " + type + " calculator...");
     }
   </script>
+
 </body>
 </html>

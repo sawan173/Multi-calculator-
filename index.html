@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi Calculator Pro</title>
   <style>
-    /* ===== RESET ===== */
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
 
     body {
@@ -14,7 +13,6 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* ===== NAVBAR ===== */
     nav {
       background:#007BFF;
       padding:15px;
@@ -22,28 +20,13 @@
       justify-content:center;
       gap:20px;
     }
-    nav a {
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-    }
+    nav a {color:white;text-decoration:none;font-weight:bold;}
     nav a:hover {text-decoration:underline;}
 
-    /* ===== HERO ===== */
-    header {
-      text-align:center;
-      padding:50px 20px;
-    }
-    header h1 {
-      font-size:2.5em;
-      color:#007BFF;
-    }
-    header p {
-      font-size:1.2em;
-      margin-top:10px;
-    }
+    header {text-align:center;padding:50px 20px;}
+    header h1 {font-size:2.5em;color:#007BFF;}
+    header p {font-size:1.2em;margin-top:10px;}
 
-    /* ===== CALCULATOR CARDS ===== */
     .tools {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -59,27 +42,15 @@
       cursor:pointer;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .tool img {
-      width:60px;
-      margin-bottom:10px;
-    }
+    .tool img {width:60px;margin-bottom:10px;}
     .tool:hover {
       transform: translateY(-5px);
       box-shadow:0 6px 12px rgba(0,0,0,0.2);
     }
 
-    /* ===== SECTIONS ===== */
-    section {
-      padding:40px 20px;
-      max-width:900px;
-      margin:auto;
-    }
-    section h2 {
-      color:#007BFF;
-      margin-bottom:15px;
-    }
+    section {padding:40px 20px;max-width:900px;margin:auto;}
+    section h2 {color:#007BFF;margin-bottom:15px;}
 
-    /* ===== FOOTER ===== */
     footer {
       background:#007BFF;
       color:white;
@@ -88,19 +59,46 @@
       margin-top:20px;
     }
 
-    /* ===== DARK MODE ===== */
-    .dark {
-      background:#121212;
-      color:#eee;
-    }
+    .dark {background:#121212;color:#eee;}
     .dark nav {background:#1f1f1f;}
     .dark footer {background:#1f1f1f;}
     .dark .tool {background:#1e1e1e;color:#eee;}
+
+    /* ===== MODAL ===== */
+    .modal {
+      display:none;
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.6);
+      justify-content:center;
+      align-items:center;
+    }
+    .modal-content {
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      max-width:400px;
+      width:90%;
+      text-align:center;
+      box-shadow:0 6px 12px rgba(0,0,0,0.3);
+    }
+    .modal-content h2 {margin-bottom:15px;color:#007BFF;}
+    .modal-content input {
+      width:90%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px;
+    }
+    .modal-content button {
+      background:#007BFF;color:white;
+      border:none;padding:10px 15px;margin-top:10px;
+      border-radius:5px;cursor:pointer;
+    }
+    .close-btn {
+      float:right;cursor:pointer;font-size:18px;font-weight:bold;color:red;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- NAVBAR -->
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -109,66 +107,105 @@
     <button onclick="toggleDarkMode()" style="margin-left:auto;background:#fff;color:#007BFF;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">🌙</button>
   </nav>
 
-  <!-- ===== HERO ===== -->
+  <!-- HERO -->
   <header id="home">
     <h1>Multi Calculator Pro</h1>
     <p>All-in-one online calculators at your fingertips</p>
   </header>
 
-  <!-- ===== TOOLS ===== -->
+  <!-- TOOLS -->
   <div class="tools">
     <div class="tool" onclick="openCalculator('bmi')">
       <img src="https://img.icons8.com/color/96/weight.png" alt="BMI">
       <h3>BMI Calculator</h3>
     </div>
-    <div class="tool" onclick="openCalculator('age')">
+    <div class="tool" onclick="alert('Age calculator coming soon!')">
       <img src="https://img.icons8.com/color/96/birthday.png" alt="Age">
       <h3>Age Calculator</h3>
     </div>
-    <div class="tool" onclick="openCalculator('gst')">
+    <div class="tool" onclick="alert('GST calculator coming soon!')">
       <img src="https://img.icons8.com/color/96/tax.png" alt="GST">
       <h3>GST Calculator</h3>
     </div>
-    <div class="tool" onclick="openCalculator('discount')">
+    <div class="tool" onclick="alert('Discount calculator coming soon!')">
       <img src="https://img.icons8.com/color/96/discount.png" alt="Discount">
       <h3>Discount Calculator</h3>
     </div>
   </div>
 
-  <!-- ===== ABOUT ===== -->
+  <!-- ABOUT -->
   <section id="about">
     <h2>About</h2>
     <p>Multi Calculator Pro is a simple and powerful tool that helps you with everyday calculations like BMI, Age, GST, Discounts and more – all in one place!</p>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <p>If you have any feedback or suggestions, feel free to reach out.</p>
     <p>Email: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
   </section>
 
-  <!-- ===== PRIVACY POLICY ===== -->
+  <!-- PRIVACY -->
   <section id="privacy">
     <h2>Privacy Policy</h2>
     <p>We respect your privacy. We do not collect personal information directly. However, third-party tools like Google Analytics may collect anonymous data for improving the service.</p>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer>
     &copy; 2025 Multi Calculator Pro. All rights reserved.
   </footer>
 
-  <!-- ===== SCRIPT ===== -->
+  <!-- ===== BMI MODAL ===== -->
+  <div id="bmiModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeCalculator('bmi')">&times;</span>
+      <h2>BMI Calculator</h2>
+      <input type="number" id="weight" placeholder="Enter weight (kg)">
+      <input type="number" id="height" placeholder="Enter height (cm)">
+      <button onclick="calculateBMI()">Calculate</button>
+      <p id="bmiResult"></p>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
   <script>
-    // Dark Mode Toggle
     function toggleDarkMode(){
       document.body.classList.toggle("dark");
     }
 
-    // Open Calculator (dummy for now)
     function openCalculator(type){
-      alert("Opening " + type + " calculator...");
+      if(type === 'bmi'){
+        document.getElementById("bmiModal").style.display="flex";
+      }
+    }
+    function closeCalculator(type){
+      if(type === 'bmi'){
+        document.getElementById("bmiModal").style.display="none";
+      }
+    }
+    function calculateBMI(){
+      let weight = document.getElementById("weight").value;
+      let height = document.getElementById("height").value/100;
+      if(weight && height){
+        let bmi = (weight / (height*height)).toFixed(2);
+        let status = "";
+        if(bmi < 18.5) status = "Underweight";
+        else if(bmi < 25) status = "Normal";
+        else if(bmi < 30) status = "Overweight";
+        else status = "Obese";
+        document.getElementById("bmiResult").innerText = `Your BMI is ${bmi} (${status})`;
+      } else {
+        document.getElementById("bmiResult").innerText = "Please enter valid weight and height.";
+      }
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event){
+      if(event.target.classList.contains("modal")){
+        event.target.style.display="none";
+      }
     }
   </script>
 

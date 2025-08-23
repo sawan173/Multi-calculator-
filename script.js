@@ -1,27 +1,47 @@
-// Navbar Toggle
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+// Navbar toggle
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-links").classList.toggle("active");
 });
 
-// Card Animations on Scroll
-const cards = document.querySelectorAll(".card, .coming-soon, .hero");
+// BMI Calculator
+function calculateBMI() {
+  let weight = document.getElementById("bmiWeight").value;
+  let height = document.getElementById("bmiHeight").value / 100;
+  if (weight && height) {
+    let bmi = (weight / (height * height)).toFixed(2);
+    document.getElementById("bmiResult").innerText = "Your BMI: " + bmi;
+  }
+}
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.2 });
+// Age Calculator
+function calculateAge() {
+  let dob = new Date(document.getElementById("dob").value);
+  if (!isNaN(dob)) {
+    let diff = Date.now() - dob.getTime();
+    let age = new Date(diff).getUTCFullYear() - 1970;
+    document.getElementById("ageResult").innerText = "Your Age: " + age + " years";
+  }
+}
 
-cards.forEach(card => observer.observe(card));
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      alert("Button clicked: " + btn.innerText);
-    });
-  });
-});
+// EMI Calculator
+function calculateEMI() {
+  let principal = parseFloat(document.getElementById("loanAmount").value);
+  let rate = parseFloat(document.getElementById("interestRate").value) / 100 / 12;
+  let tenure = parseFloat(document.getElementById("loanTenure").value);
+
+  if (principal && rate && tenure) {
+    let emi = (principal * rate * Math.pow(1 + rate, tenure)) /
+              (Math.pow(1 + rate, tenure) - 1);
+    document.getElementById("emiResult").innerText = "Your EMI: ₹" + emi.toFixed(2);
+  }
+}
+
+// Percentage Calculator
+function calculatePercentage() {
+  let part = document.getElementById("part").value;
+  let total = document.getElementById("total").value;
+  if (part && total) {
+    let percentage = (part / total) * 100;
+    document.getElementById("percentageResult").innerText = "Percentage: " + percentage.toFixed(2) + "%";
+  }
+}

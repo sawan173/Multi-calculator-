@@ -1,0 +1,135 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background Gradient */
+body {
+  background: linear-gradient(135deg, #4f46e5, #9333ea, #ec4899);
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.nav-links li a:hover {
+  color: #ffd700;
+}
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* Calculator Cards */
+.calculator-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 20px;
+}
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 25px;
+  width: 280px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(255,255,255,0.2);
+}
+.card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+.card h2 {
+  margin-bottom: 10px;
+}
+
+/* Coming Soon */
+.coming-soon {
+  background: rgba(0,0,0,0.2);
+  padding: 40px;
+  margin: 30px 0;
+  border-radius: 10px;
+}
+
+/* Footer */
+footer {
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  margin-top: 30px;
+}
+.footer-links a {
+  color: #ffd700;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}

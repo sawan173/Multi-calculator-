@@ -9,6 +9,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       scroll-behavior: smooth;
+      background: #fafafa;
     }
 
     /* Navbar */
@@ -32,7 +33,7 @@
 
     /* Hero */
     .hero {
-      height: 60vh;
+      height: 45vh;
       background: linear-gradient(135deg, #007BFF, #6f42c1);
       display: flex;
       flex-direction: column;
@@ -46,13 +47,47 @@
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
+
+    /* Calculator menu */
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .menu button {
+      width: 130px;
+      height: 130px;
+      border: none;
+      border-radius: 15px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .menu button:hover {
+      transform: scale(1.05);
+      background: #f1f1ff;
+    }
+    .menu img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 8px;
+    }
+    .menu span {
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    /* Card style */
-    .card {
+    /* Calculator cards */
+    .calculator {
+      display: none;
       margin: 20px auto;
       max-width: 500px;
       padding: 20px;
@@ -61,8 +96,27 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .card h2 {
-      margin: 0 0 10px;
+    .calculator h2 {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button.calcBtn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.calcBtn:hover {
+      background: #0056b3;
     }
 
     /* Sections */
@@ -80,23 +134,12 @@
       margin: auto;
       text-align: left;
     }
-    input, textarea {
+    textarea {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
-    }
-    button {
-      padding: 10px 20px;
-      background: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
     }
 
     /* Footer */
@@ -121,39 +164,62 @@
 
   <!-- Hero -->
   <div class="hero" id="home">
-    <h1>Welcome to Multi Calculator Pro</h1>
-    <p>All-in-one free calculators for your daily needs</p>
+    <h1>Multi Calculator Pro</h1>
+    <p>Select a calculator below 👇</p>
   </div>
 
-  <!-- Example Calculators -->
-  <div class="card">
+  <!-- Calculator Menu -->
+  <div class="menu">
+    <button onclick="showCalc('bmiCalc')">
+      <img src="icons/bmi.png" alt="BMI">
+      <span>BMI</span>
+    </button>
+    <button onclick="showCalc('ageCalc')">
+      <img src="icons/age.png" alt="Age">
+      <span>Age</span>
+    </button>
+    <button onclick="showCalc('gstCalc')">
+      <img src="icons/gst.png" alt="GST">
+      <span>GST</span>
+    </button>
+    <button onclick="showCalc('discountCalc')">
+      <img src="icons/discount.png" alt="Discount">
+      <span>Discount</span>
+    </button>
+  </div>
+
+  <!-- BMI Calculator -->
+  <div class="calculator" id="bmiCalc">
     <h2>📝 BMI Calculator</h2>
     <input type="number" id="weight" placeholder="Weight (kg)">
     <input type="number" id="height" placeholder="Height (cm)">
-    <button onclick="calculateBMI()">Calculate</button>
+    <button class="calcBtn" onclick="calculateBMI()">Calculate</button>
     <p id="bmiResult"></p>
   </div>
 
-  <div class="card">
+  <!-- Age Calculator -->
+  <div class="calculator" id="ageCalc">
     <h2>🎂 Age Calculator</h2>
     <input type="date" id="dob">
-    <button onclick="calculateAge()">Calculate</button>
+    <button class="calcBtn" onclick="calculateAge()">Calculate</button>
     <p id="ageResult"></p>
   </div>
 
-  <div class="card">
+  <!-- GST Calculator -->
+  <div class="calculator" id="gstCalc">
     <h2>💰 GST Calculator</h2>
     <input type="number" id="amount" placeholder="Amount">
     <input type="number" id="gstRate" placeholder="GST Rate %">
-    <button onclick="calculateGST()">Calculate</button>
+    <button class="calcBtn" onclick="calculateGST()">Calculate</button>
     <p id="gstResult"></p>
   </div>
 
-  <div class="card">
+  <!-- Discount Calculator -->
+  <div class="calculator" id="discountCalc">
     <h2>🏷️ Discount Calculator</h2>
     <input type="number" id="price" placeholder="Original Price">
     <input type="number" id="discount" placeholder="Discount %">
-    <button onclick="calculateDiscount()">Calculate</button>
+    <button class="calcBtn" onclick="calculateDiscount()">Calculate</button>
     <p id="discountResult"></p>
   </div>
 
@@ -201,8 +267,15 @@
     © 2025 Multi Calculator Pro | All Rights Reserved
   </footer>
 
-  <!-- JavaScript for calculators -->
+  <!-- JavaScript -->
   <script>
+    function showCalc(id) {
+      let calcs = document.querySelectorAll(".calculator");
+      calcs.forEach(c => c.style.display = "none");
+      document.getElementById(id).style.display = "block";
+      window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
+    }
+
     function calculateBMI() {
       let weight = document.getElementById("weight").value;
       let height = document.getElementById("height").value / 100;

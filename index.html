@@ -7,35 +7,67 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  <!-- Navbar -->
   <header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">BMI</a></li>
-        <li><a href="#">Age</a></li>
-        <li><a href="#">EMI</a></li>
-        <li><a href="#">Percentage</a></li>
+    <nav class="navbar">
+      <div class="logo">Multi Calculator</div>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="#bmi">BMI</a></li>
+        <li><a href="#age">Age</a></li>
+        <li><a href="#emi">EMI</a></li>
+        <li><a href="#percentage">Percentage</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Section -->
   <main>
-    <section>
-      <h1>Welcome to Multi Calculator</h1>
-      <p>Select a calculator option from the menu above.</p>
+    <h1 class="title">All in One Calculator</h1>
+    <p class="subtitle">Choose your calculator below</p>
+
+    <!-- BMI Calculator -->
+    <section id="bmi" class="card">
+      <h2>BMI Calculator</h2>
+      <input type="number" id="bmiWeight" placeholder="Weight (kg)">
+      <input type="number" id="bmiHeight" placeholder="Height (cm)">
+      <button onclick="calculateBMI()">Calculate</button>
+      <p id="bmiResult"></p>
+    </section>
+
+    <!-- Age Calculator -->
+    <section id="age" class="card">
+      <h2>Age Calculator</h2>
+      <input type="date" id="dob">
+      <button onclick="calculateAge()">Calculate</button>
+      <p id="ageResult"></p>
+    </section>
+
+    <!-- EMI Calculator -->
+    <section id="emi" class="card">
+      <h2>EMI Calculator</h2>
+      <input type="number" id="loanAmount" placeholder="Loan Amount">
+      <input type="number" id="interestRate" placeholder="Interest Rate (%)">
+      <input type="number" id="loanTenure" placeholder="Tenure (months)">
+      <button onclick="calculateEMI()">Calculate</button>
+      <p id="emiResult"></p>
+    </section>
+
+    <!-- Percentage Calculator -->
+    <section id="percentage" class="card">
+      <h2>Percentage Calculator</h2>
+      <input type="number" id="part" placeholder="Part Value">
+      <input type="number" id="total" placeholder="Total Value">
+      <button onclick="calculatePercentage()">Calculate</button>
+      <p id="percentageResult"></p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2024 Multi Calculator</p>
+    <p>© 2025 Multi Calculator | All Rights Reserved</p>
   </footer>
 
-  <!-- Fix clicks issue -->
-  <script>
-    document.querySelectorAll("*").forEach(el => {
-      el.style.pointerEvents = "auto";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

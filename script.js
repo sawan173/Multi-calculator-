@@ -1,3 +1,5 @@
+// Footer year
+document.getElementById('y').textContent = new Date().getFullYear();
 
 const round = (n, d=2) => Number((n).toFixed(d));
 

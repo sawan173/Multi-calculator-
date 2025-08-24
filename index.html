@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><i class="fa-solid fa-calculator"></i> Multi Calculator</div>
+    <ul class="nav-links">
+      <li data-target="percentage"><i class="fa-solid fa-percent"></i> Percentage</li>
+      <li data-target="bmi"><i class="fa-solid fa-heart-pulse"></i> BMI</li>
+      <li data-target="emi"><i class="fa-solid fa-coins"></i> EMI</li>
+      <li data-target="age"><i class="fa-solid fa-user-clock"></i> Age</li>
+      <li data-target="discount"><i class="fa-solid fa-tags"></i> Discount</li>
+      <li data-target="gst"><i class="fa-solid fa-file-invoice-dollar"></i> GST</li>
+      <li data-target="unit"><i class="fa-solid fa-ruler"></i> Unit</li>
+      <li data-target="cgpa"><i class="fa-solid fa-graduation-cap"></i> CGPA</li>
+    </ul>
+  </nav>
+
+  <section class="container">
+    <div id="percentage" class="calc-card active animate">
+      <h2>Percentage Calculator</h2>
+      <input type="number" id="percentValue" placeholder="Value" />
+      <input type="number" id="percentTotal" placeholder="Total" />
+      <button onclick="calculatePercentage()">Calculate</button>
+      <p id="percentResult"></p>
+    </div>
+
+    <div id="bmi" class="calc-card">
+      <h2>BMI Calculator</h2>
+      <input type="number" id="bmiWeight" placeholder="Weight (kg)" />
+      <input type="number" id="bmiHeight" placeholder="Height (cm)" />
+      <button onclick="calculateBMI()">Calculate</button>
+      <p id="bmiResult"></p>
+    </div>
+
+    <div id="emi" class="calc-card">
+      <h2>EMI Calculator</h2>
+      <input type="number" id="emiLoan" placeholder="Loan Amount" />
+      <input type="number" id="emiRate" placeholder="Interest Rate (%)" />
+      <input type="number" id="emiTime" placeholder="Time (months)" />
+      <button onclick="calculateEMI()">Calculate</button>
+      <p id="emiResult"></p>
+    </div>
+
+    <div id="age" class="calc-card">
+      <h2>Age Calculator</h2>
+      <input type="date" id="dob" />
+      <button onclick="calculateAge()">Calculate</button>
+      <p id="ageResult"></p>
+    </div>
+
+    <div id="discount" class="calc-card">
+      <h2>Discount Calculator</h2>
+      <input type="number" id="discPrice" placeholder="Price" />
+      <input type="number" id="discPercent" placeholder="Discount %" />
+      <button onclick="calculateDiscount()">Calculate</button>
+      <p id="discountResult"></p>
+    </div>
+
+    <div id="gst" class="calc-card">
+      <h2>GST Calculator</h2>
+      <input type="number" id="gstAmount" placeholder="Amount" />
+      <input type="number" id="gstRate" placeholder="GST %" />
+      <button onclick="calculateGST()">Calculate</button>
+      <p id="gstResult"></p>
+    </div>
+
+    <div id="unit" class="calc-card">
+      <h2>Unit Converter</h2>
+      <input type="number" id="kmValue" placeholder="Km" />
+      <button onclick="convertUnit()">Convert to Miles</button>
+      <p id="unitResult"></p>
+    </div>
+
+    <div id="cgpa" class="calc-card">
+      <h2>CGPA Calculator</h2>
+      <input type="number" id="cgpaMarks" placeholder="Marks (out of 100)" />
+      <button onclick="calculateCGPA()">Calculate</button>
+      <p id="cgpaResult"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Multi Calculator | Designed with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

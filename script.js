@@ -1,3 +1,28 @@
+// Smooth Page Transitions
+document.addEventListener("DOMContentLoaded", () => {
+  // Jab page load ho raha ho tab fade-in effect
+  document.body.classList.add("fade-in");
+
+  // Sabhi internal links ke liye
+  document.querySelectorAll("a").forEach(link => {
+    if (link.hostname === window.location.hostname) {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+
+        // Exit animation
+        document.body.classList.remove("fade-in");
+        document.body.classList.add("fade-out");
+
+        // Redirect after animation
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300); // 0.3s same as CSS transition
+      });
+    }
+  });
+});
+
 // Footer year
 document.getElementById('y').textContent = new Date().getFullYear();
 

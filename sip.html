@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIP Calculator • Multi Calculator Pro</title>
+  <meta name="description" content="Estimate mutual fund SIP future value." />
+  <link rel="canonical" href="/calculators/sip.html" />
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SIP Calculator • Multi Calculator Pro" />
+  <meta property="og:description" content="Estimate mutual fund SIP future value." />
+  <meta property="og:url" content="/calculators/sip.html" />
+  <meta property="og:image" content="/assets/og-default.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SIP Calculator • Multi Calculator Pro">
+  <meta name="twitter:description" content="Estimate mutual fund SIP future value.">
+  <meta name="twitter:image" content="/assets/og-default.png">
+
+  <!-- Search Console Verify (replace content with your code) -->
+  <meta name="google-site-verification" content="XYZ123abc456-verify-code" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script defer src="/assets/js/main.js"></script>
+</head>
+
+<body>
+<header class="container header">
+  <a class="brand" href="/">Multi Calculator Pro</a>
+  <nav class="nav">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+  </nav>
+</header>
+<main class="container">
+
+<section class="form">
+  <h2>SIP Calculator</h2>
+  <p class="small">Estimate mutual fund SIP future value.</p>
+  
+<div class="field"><label>Monthly Investment (₹)</label><input id="m" type="number" value="5000"></div>
+<div class="field"><label>Expected Annual Return (%)</label><input id="ar" type="number" value="12"></div>
+<div class="field"><label>Duration (years)</label><input id="yrs" type="number" value="10"></div>
+<button class="primary" onclick="calcSIP()">Calculate</button>
+<div class="result" id="out"></div>
+
+  <div class="actions">
+    <button class="secondary" id="copyBtn">Copy Result</button>
+    <button class="secondary" id="shareBtn">Share</button>
+  </div>
+</section>
+<script>
+
+function calcSIP(){
+  const m = parseFloat(document.getElementById('m').value);
+  const ar = parseFloat(document.getElementById('ar').value)/12/100;
+  const n = parseInt(document.getElementById('yrs').value)*12;
+  const future = m * ( (Math.pow(1+ar,n)-1) / ar ) * (1+ar);
+  const invested = m*n;
+  const gain = future - invested;
+  document.getElementById('out').innerText = `Future Value: ₹${future.toFixed(0)} | Invested: ₹{invested.toFixed(0)} | Gain: ₹${gain.toFixed(0)}`;
+}
+
+
+const copyEl = document.getElementById('copyBtn');
+const shareEl = document.getElementById('shareBtn');
+function extractResult(){
+  const out = document.querySelector('.result');
+  return out ? out.innerText.trim() : '';
+}
+if(copyEl) copyEl.addEventListener('click', ()=> copyToClipboard(extractResult()));
+if(shareEl) shareEl.addEventListener('click', ()=> shareText(extractResult()));
+</script>
+
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Multi Calculator Pro</p>
+    <p><a href="/sitemap.xml">Sitemap</a> · <a href="/robots.txt">Robots</a></p>
+  </div>
+</footer>
+
+<!-- Google Analytics (replace G-XXXXXXX with your ID) -->
+<script>
+  // GA4 placeholder – replace 'G-XXXXXXX' with your Measurement ID
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+</body>
+</html>

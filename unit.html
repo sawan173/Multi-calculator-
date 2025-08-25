@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unit Converter • Multi Calculator Pro</title>
+  <meta name="description" content="Convert length, weight and temperature." />
+  <link rel="canonical" href="/calculators/unit.html" />
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Unit Converter • Multi Calculator Pro" />
+  <meta property="og:description" content="Convert length, weight and temperature." />
+  <meta property="og:url" content="/calculators/unit.html" />
+  <meta property="og:image" content="/assets/og-default.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unit Converter • Multi Calculator Pro">
+  <meta name="twitter:description" content="Convert length, weight and temperature.">
+  <meta name="twitter:image" content="/assets/og-default.png">
+
+  <!-- Search Console Verify (replace content with your code) -->
+  <meta name="google-site-verification" content="XYZ123abc456-verify-code" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script defer src="/assets/js/main.js"></script>
+</head>
+
+<body>
+<header class="container header">
+  <a class="brand" href="/">Multi Calculator Pro</a>
+  <nav class="nav">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+  </nav>
+</header>
+<main class="container">
+
+<section class="form">
+  <h2>Unit Converter</h2>
+  <p class="small">Convert length, weight and temperature.</p>
+  
+<div class="field"><label>Category</label>
+<select id="cat" onchange="swapUnits()">
+  <option value="length">Length</option>
+  <option value="weight">Weight</option>
+  <option value="temp">Temperature</option>
+</select></div>
+<div class="field"><label>From</label><select id="from"></select></div>
+<div class="field"><label>To</label><select id="to"></select></div>
+<div class="field"><label>Value</label><input id="val" type="number" value="1"></div>
+<button class="primary" onclick="convert()">Convert</button>
+<div class="result" id="out"></div>
+
+  <div class="actions">
+    <button class="secondary" id="copyBtn">Copy Result</button>
+    <button class="secondary" id="shareBtn">Share</button>
+  </div>
+</section>
+<script>
+
+const units = {
+  length:{ m:1, cm:0.01, km:1000, in:0.0254, ft:0.3048 },
+  weight:{ kg:1, g:0.001, lb:0.453592, oz:0.0283495 },
+  temp:{} // handled separately
+};
+function fill(sel, opts){ sel.innerHTML = Object.keys(opts).map(k=>`<option value="${k}">${k}</option>`).join(''); }
+function swapUnits(){
+  const cat = document.getElementById('cat').value;
+  const f = document.getElementById('from'), t = document.getElementById('to');
+  if(cat==='temp'){ f.innerHTML = t.innerHTML = ['C','F','K'].map(k=>`<option value="${k}">${k}</option>`).join(''); }
+  else { fill(f, units[cat]); fill(t, units[cat]); }
+}
+function convert(){
+  const cat = document.getElementById('cat').value;
+  const v = parseFloat(document.getElementById('val').value);
+  const from = document.getElementById('from').value;
+  const to = document.getElementById('to').value;
+  let res = 0;
+  if(cat==='temp'){
+    let c;
+    if(from==='C') c = v;
+    if(from==='F') c = (v-32)*5/9;
+    if(from==='K') c = v-273.15;
+    if(to==='C') res = c;
+    if(to==='F') res = c*9/5+32;
+    if(to==='K') res = c+273.15;
+  }else{
+    const base = v*units[cat][from];
+    res = base/units[cat][to];
+  }
+  document.getElementById('out').innerText = `Result: ${res}`;
+}
+swapUnits();
+
+
+const copyEl = document.getElementById('copyBtn');
+const shareEl = document.getElementById('shareBtn');
+function extractResult(){
+  const out = document.querySelector('.result');
+  return out ? out.innerText.trim() : '';
+}
+if(copyEl) copyEl.addEventListener('click', ()=> copyToClipboard(extractResult()));
+if(shareEl) shareEl.addEventListener('click', ()=> shareText(extractResult()));
+</script>
+
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Multi Calculator Pro</p>
+    <p><a href="/sitemap.xml">Sitemap</a> · <a href="/robots.txt">Robots</a></p>
+  </div>
+</footer>
+
+<!-- Google Analytics (replace G-XXXXXXX with your ID) -->
+<script>
+  // GA4 placeholder – replace 'G-XXXXXXX' with your Measurement ID
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+</body>
+</html>

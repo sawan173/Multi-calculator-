@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discount Calculator • Multi Calculator Pro</title>
+  <meta name="description" content="Quickly compute sale price and savings." />
+  <link rel="canonical" href="/calculators/discount.html" />
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Discount Calculator • Multi Calculator Pro" />
+  <meta property="og:description" content="Quickly compute sale price and savings." />
+  <meta property="og:url" content="/calculators/discount.html" />
+  <meta property="og:image" content="/assets/og-default.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Discount Calculator • Multi Calculator Pro">
+  <meta name="twitter:description" content="Quickly compute sale price and savings.">
+  <meta name="twitter:image" content="/assets/og-default.png">
+
+  <!-- Search Console Verify (replace content with your code) -->
+  <meta name="google-site-verification" content="XYZ123abc456-verify-code" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script defer src="/assets/js/main.js"></script>
+</head>
+
+<body>
+<header class="container header">
+  <a class="brand" href="/">Multi Calculator Pro</a>
+  <nav class="nav">
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+  </nav>
+</header>
+<main class="container">
+
+<section class="form">
+  <h2>Discount Calculator</h2>
+  <p class="small">Quickly compute sale price and savings.</p>
+  
+<div class="field"><label>Original Price</label><input id="op" type="number" value="1500"></div>
+<div class="field"><label>Discount (%)</label><input id="dp" type="number" value="20"></div>
+<button class="primary" onclick="calcDisc()">Calculate</button>
+<div class="result" id="out"></div>
+
+  <div class="actions">
+    <button class="secondary" id="copyBtn">Copy Result</button>
+    <button class="secondary" id="shareBtn">Share</button>
+  </div>
+</section>
+<script>
+
+function calcDisc(){
+  const op = parseFloat(document.getElementById('op').value);
+  const d = parseFloat(document.getElementById('dp').value);
+  const save = op*d/100; const finalP = op-save;
+  document.getElementById('out').innerText = `Save: ₹${save.toFixed(2)} | Final Price: ₹${finalP.toFixed(2)}`;
+}
+
+
+const copyEl = document.getElementById('copyBtn');
+const shareEl = document.getElementById('shareBtn');
+function extractResult(){
+  const out = document.querySelector('.result');
+  return out ? out.innerText.trim() : '';
+}
+if(copyEl) copyEl.addEventListener('click', ()=> copyToClipboard(extractResult()));
+if(shareEl) shareEl.addEventListener('click', ()=> shareText(extractResult()));
+</script>
+
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Multi Calculator Pro</p>
+    <p><a href="/sitemap.xml">Sitemap</a> · <a href="/robots.txt">Robots</a></p>
+  </div>
+</footer>
+
+<!-- Google Analytics (replace G-XXXXXXX with your ID) -->
+<script>
+  // GA4 placeholder – replace 'G-XXXXXXX' with your Measurement ID
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+</body>
+</html>

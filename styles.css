@@ -1,0 +1,86 @@
+
+:root{
+  --bg: #f6fbff;
+  --text: #0f172a;
+  --card: #ffffff;
+  --muted:#5b657a;
+  --accent:#2e7dff;
+  --ring: rgba(46,125,255,.35);
+  --shadow: 0 10px 20px rgba(15, 23, 42, .08);
+}
+:root.dark{
+  --bg:#0b1220;
+  --text:#e6edf7;
+  --card:#0f172a;
+  --muted:#a6b0c3;
+  --accent:#6aa4ff;
+  --ring: rgba(106,164,255,.35);
+  --shadow: 0 10px 24px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+  color:var(--text);
+  background: linear-gradient(135deg,#7ad1ff 0%, #72e6c9 100%) fixed;
+  background-attachment: fixed;
+}
+.container{width:min(1100px, 92%); margin-inline:auto}
+.header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 0;
+}
+.brand{font-weight:800; text-decoration:none; color:var(--text); font-size:1.1rem}
+.nav a{margin-right:14px; text-decoration:none; color:var(--text); opacity:.9}
+.theme-toggle{
+  border:0; background:var(--card); color:var(--text);
+  padding:8px 10px; border-radius:12px; box-shadow:var(--shadow); cursor:pointer;
+}
+main.container{padding:24px 0 60px}
+.hero{
+  text-align:center; margin: 18px 0 28px;
+}
+.hero h1{font-size: clamp(28px, 4.5vw, 44px); margin:8px 0 6px}
+.hero p{color:var(--muted); margin:0}
+.grid{
+  display:grid; gap:18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 26px;
+}
+.card{
+  background:var(--card); border-radius:16px; padding:18px 16px; box-shadow:var(--shadow);
+  display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--text);
+  border: 1px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.card:hover{ transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.12); border-color:var(--ring)}
+.card .icon{font-size:28px}
+.footer{padding:28px 0 40px; text-align:center; color:var(--muted)}
+/* Calculator forms */
+.form{
+  background:var(--card); border-radius:18px; padding:22px; box-shadow:var(--shadow);
+  max-width: 720px; margin: 10px auto;
+}
+.form h2{margin:0 0 10px}
+.field{margin:14px 0}
+label{display:block; margin-bottom:6px}
+input, select, textarea{
+  width:100%; padding:12px 12px; border-radius:12px; border:1px solid #d4d9e4;
+  background: var(--bg); color:var(--text);
+}
+button.primary{
+  margin-top:8px; padding:12px 16px; border-radius:12px; border:0; cursor:pointer;
+  background:var(--accent); color:white; box-shadow:var(--shadow);
+}
+.result{
+  background: var(--bg); border-radius:14px; padding:12px; margin-top:12px; border:1px dashed #c5d4ff;
+}
+.actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
+button.secondary{
+  padding:10px 12px; border-radius:10px; border:1px solid #b7c4e9; background:var(--card); color:var(--text)
+}
+.small{color:var(--muted); font-size:.9rem}
+/* Simple table styles */
+table{width:100%; border-collapse: collapse; margin-top:10px}
+td,th{padding:10px; border-bottom:1px solid #e4e8f1}

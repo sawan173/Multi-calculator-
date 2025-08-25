@@ -1,3 +1,21 @@
+.calculator-menu {
+  display: flex;
+  flex-wrap: wrap; /* Mobile pe neeche shift ho jaye */
+  gap: 20px; /* icons ke beech space */
+  align-items: center;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.calculator-menu div {
+  display: flex;
+  align-items: center;
+}
+
+.calculator-menu i {
+  margin-right: 8px; /* icon aur text ke beech gap */
+  font-size: 20px;
+}
 
 
 .calculator-form {

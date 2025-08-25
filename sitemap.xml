@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://your-domain.example/</loc></url>
+  <url><loc>https://your-domain.example/about.html</loc></url>
+  <url><loc>https://your-domain.example/contact.html</loc></url>
+  <url><loc>https://your-domain.example/privacy.html</loc></url>
+  <url><loc>https://your-domain.example/terms.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/bmi.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/age.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/emi.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/percentage.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/gst.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/discount.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/unit.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/cgpa.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/sip.html</loc></url>
+  <url><loc>https://your-domain.example/calculators/currency.html</loc></url>
+</urlset>

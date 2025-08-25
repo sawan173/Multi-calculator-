@@ -31,11 +31,22 @@
 <main class="container">
 
 <h2>EMI Calculator</h2>
-<div class="card"><div class="form">
-  <input id="e_principal" class="input" type="number" placeholder="Loan Amount">
-  <input id="e_rate" class="input" type="number" placeholder="Annual Interest %">
-  <input id="e_months" class="input" type="number" placeholder="Tenure (months)">
-  <button class="btn" onclick="calcEMI()">Calculate</button>
+<div class="calculator-form">
+  <div class="input-group">
+    <input type="number" id="loan" placeholder="Loan Amount">
+  </div>
+
+  <div class="input-group">
+    <input type="number" id="rate" placeholder="Annual Interest %">
+  </div>
+
+  <div class="input-group">
+    <input type="number" id="months" placeholder="Tenure (months)">
+  </div>
+
+  <button onclick="calculateEMI()">Calculate</button>
+</div>
+
   <div id="e_out" class="result">—</div>
 </div></div>
 <section class="card section"><h3>Formula</h3><p class="small">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r = monthly rate, n = number of months.</p></section>

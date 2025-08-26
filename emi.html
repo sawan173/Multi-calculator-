@@ -4,34 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- SEO Tags -->
   <title>EMI Calculator – Multi Calculator Pro</title>
-  <meta name="description" content="Calculate your monthly EMI (Equated Monthly Installment) for any loan with our easy EMI Calculator.">
+  <meta name="description" content="Calculate your monthly EMI (Equated Monthly Installment) for any loan quickly and accurately using our EMI Calculator.">
   <meta name="keywords" content="EMI calculator, loan calculator, monthly installment">
   <link rel="canonical" href="https://sawan173.github.io/Multi-calculator-/emi.html">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header class="topbar">
   <a class="brand" href="index.html"><i class="fa-solid fa-calculator"></i> Multi <strong>Calculator</strong></a>
+  <nav class="mainnav">
+    <a href="percentage.html"><i class="fa-solid fa-percent"></i> Percentage</a>
+    <a href="bmi.html"><i class="fa-solid fa-heart-pulse"></i> BMI</a>
+    <a href="emi.html"><i class="fa-solid fa-coins"></i> EMI</a>
+    <a href="age.html"><i class="fa-solid fa-user-clock"></i> Age</a>
+    <a href="discount.html"><i class="fa-solid fa-tags"></i> Discount</a>
+    <a href="gst.html"><i class="fa-solid fa-file-invoice-dollar"></i> GST</a>
+    <a href="unit.html"><i class="fa-solid fa-ruler-combined"></i> Unit</a>
+    <a href="cgpa.html"><i class="fa-solid fa-graduation-cap"></i> CGPA</a>
+  </nav>
 </header>
 
 <main class="container">
+  <!-- Main Heading -->
   <h1>EMI Calculator</h1>
-  <p>Compute your monthly installment for loans with interest rates.</p>
+  <p>Compute your monthly installment for any loan with ease and accuracy.</p>
 
+  <!-- Loan Details Form -->
   <section>
-    <h2>Loan Details</h2>
-    <!-- Form fields here -->
+    <h2>Enter Loan Details</h2>
+    <form id="emiForm">
+      <label for="loanAmount">Loan Amount:</label>
+      <input type="number" id="loanAmount" placeholder="Enter loan amount" required>
+
+      <label for="interestRate">Interest Rate (% per annum):</label>
+      <input type="number" id="interestRate" step="0.01" placeholder="Enter interest rate" required>
+
+      <label for="tenure">Loan Tenure (Months):</label>
+      <input type="number" id="tenure" placeholder="Enter tenure in months" required>
+
+      <button type="submit">Calculate EMI</button>
+    </form>
   </section>
 
+  <!-- Result Section -->
   <section>
     <h2>EMI Result</h2>
-    <!-- Result output here -->
+    <div id="emiResult"></div>
   </section>
 </main>
 
-<footer class="footer"></footer>
-<script src="script.js"></script>
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Multi Calculator | Designed with ♥</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for EMI Calculation -->
+<script>
+document.getElementById("emiForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let P = parseFloat(document.getElementById("loanAmount").value);
+  let R = parseFloat(document.getElementById("interestRate").value) / 12 / 100;
+  let N = parseInt(document.getElementById("tenure").value);
+
+  if(P <= 0 || R < 0 || N <= 0){
+    document.getElementById("emiResult").innerHTML = "<p>Please enter valid positive values.</p>";
+    return;
+  }
+
+  let emi = (P * R * Math.pow(1+R, N)) / (Math.pow(1+R, N) - 1);
+  emi = emi.toFixed(2);
+
+  document.getElementById("emiResult").innerHTML = `<p>Your EMI is: <strong>${emi}</strong></p>`;
+});
+</script>
+
 </body>
 </html>

@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMI Calculator — Multi Calculator</title>
-<meta name="description" content="EMI Calculator - Calculate your monthly loan payments instantly with visual breakdown of Principal vs Interest.">
+<meta name="description" content="EMI Calculator - Calculate your monthly loan payments instantly. Easy and fast EMI calculation for loans, interest, and tenure.">
 <meta name="keywords" content="EMI calculator, loan calculator, monthly EMI, interest calculator, multi calculator">
 <meta name="google-site-verification" content="PASTE_YOUR_GSC_CODE_HERE">
 <link rel="canonical" href="https://sawan173.github.io/Multi-calculator-/emi.html">
 
-<!-- Open Graph -->
-<meta property="og:title" content="EMI Calculator — Multi Calculator">
-<meta property="og:description" content="Calculate your monthly EMI easily and see the Principal vs Interest breakdown in chart.">
-<meta property="og:url" content="https://sawan173.github.io/Multi-calculator-/emi.html">
-<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<!-- Google Analytics -->
+<title>EMI Calculator — Multi Calculator</title>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -23,180 +21,53 @@
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
-
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Fonts & Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* Global */
-body { font-family:'Poppins',sans-serif; margin:0; background:#f4f4f9; color:#333; transition: background 0.3s, color 0.3s; }
-a { text-decoration:none; color:inherit; }
-.container { max-width:900px; margin:2rem auto; padding:0 1rem; }
-
-/* Header */
-.topbar { display:flex; justify-content:space-between; align-items:center; background:#0f52ba; padding:1rem; color:white; flex-wrap:wrap; }
-.topbar .brand { font-size:1.4rem; font-weight:700; }
-.mainnav a { margin:0 0.5rem; padding:0.5rem; color:white; border-radius:6px; transition: background 0.3s; }
-.mainnav a:hover, .mainnav a.active { background: rgba(255,255,255,0.2); }
-
-/* Card */
-.card { background:#fff; padding:2rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.1); margin-bottom:2rem; transition: background 0.3s, color 0.3s; }
-.emi-card .form { display:flex; flex-direction:column; gap:1rem; position:relative; }
-.input-wrapper { position:relative; }
-.input { padding:0.8rem 1rem; border:1px solid #ccc; border-radius:8px; font-size:1rem; width:100%; box-sizing:border-box; transition: all 0.3s; }
-.input:focus { border-color:#0f52ba; box-shadow:0 0 8px rgba(15,82,186,0.3); outline:none; }
-
-/* Tooltip */
-.info-icon { position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; color:#0f52ba; }
-.tooltip-text { visibility:hidden; width:200px; background:#0f52ba; color:white; text-align:center; padding:0.5rem; border-radius:6px; position:absolute; z-index:1; top:50%; right:35px; transform:translateY(-50%); opacity:0; transition: opacity 0.3s; font-size:0.85rem; }
-.input-wrapper:hover .tooltip-text { visibility:visible; opacity:1; }
-
-/* Buttons */
-.btn { padding:0.8rem 1rem; background:#0f52ba; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer; transition: all 0.3s; }
-.btn:hover { background:#094a9c; transform: translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.2); }
-
-/* Result */
-.result { margin-top:1rem; font-size:1.3rem; font-weight:600; color:#0f52ba; min-height:1.5em; transition: all 0.5s; }
-
-/* Footer */
-.footer { background:#0f52ba; color:white; padding:1.5rem 0; text-align:center; }
-.footer-links a { margin:0 0.5rem; color:white; transition: color 0.3s; }
-.footer-links a:hover { color:#ffd700; }
-
-/* Dark Mode */
-body.dark { background:#1c1c1c; color:#f4f4f9; }
-body.dark .card { background:#2b2b2b; color:#f4f4f9; }
-body.dark .input { background:#3a3a3a; border-color:#555; color:white; }
-body.dark .btn { background:#28a745; }
-body.dark .footer { background:#111; }
-
-/* Responsive */
-@media(max-width:768px){ .topbar{flex-direction:column;align-items:flex-start;} .mainnav{display:flex;flex-wrap:wrap;margin-top:0.5rem;} }
-</style>
 </head>
 <body>
-
 <header class="topbar">
   <a class="brand" href="index.html"><i class="fa-solid fa-calculator"></i> Multi <strong>Calculator</strong></a>
   <nav class="mainnav">
-    <a href="percentage.html">Percentage</a>
-    <a href="bmi.html">BMI</a>
-    <a href="emi.html" class="active">EMI</a>
-    <a href="age.html">Age</a>
-    <a href="discount.html">Discount</a>
-    <a href="gst.html">GST</a>
-    <a href="unit.html">Unit</a>
-    <a href="cgpa.html">CGPA</a>
+    <a href="percentage.html"><i class="fa-solid fa-percent"></i><span>Percentage</span></a>
+    <a href="bmi.html"><i class="fa-solid fa-heart-pulse"></i><span>BMI</span></a>
+    <a href="emi.html" class="active"><i class="fa-solid fa-coins"></i><span>EMI</span></a>
+    <a href="age.html"><i class="fa-solid fa-user-clock"></i><span>Age</span></a>
+    <a href="discount.html"><i class="fa-solid fa-tags"></i><span>Discount</span></a>
+    <a href="gst.html"><i class="fa-solid fa-file-invoice-dollar"></i><span>GST</span></a>
+    <a href="unit.html"><i class="fa-solid fa-ruler-combined"></i><span>Unit</span></a>
+    <a href="cgpa.html"><i class="fa-solid fa-graduation-cap"></i><span>CGPA</span></a>
   </nav>
 </header>
 
 <main class="container">
-<h1>EMI Calculator</h1>
+  <h1>EMI Calculator</h1>
 
-<div class="card emi-card">
-  <div class="form">
-    <div class="input-wrapper">
+  <div class="card emi-card">
+    <div class="form">
       <input id="e_principal" class="input" type="number" placeholder="Loan Amount" aria-label="Loan Amount">
-      <i class="fa-solid fa-circle-info info-icon"></i>
-      <span class="tooltip-text">Enter the total loan amount you want to borrow.</span>
-    </div>
-
-    <div class="input-wrapper">
       <input id="e_rate" class="input" type="number" placeholder="Annual Interest %" aria-label="Annual Interest Percentage">
-      <i class="fa-solid fa-circle-info info-icon"></i>
-      <span class="tooltip-text">Enter annual interest rate (e.g., 12 for 12%).</span>
-    </div>
-
-    <div class="input-wrapper">
       <input id="e_months" class="input" type="number" placeholder="Tenure (months)" aria-label="Loan Tenure in Months">
-      <i class="fa-solid fa-circle-info info-icon"></i>
-      <span class="tooltip-text">Enter loan duration in months.</span>
+      <button class="btn" onclick="calcEMI()">Calculate</button>
+      <div id="e_out" class="result" aria-live="polite">—</div>
     </div>
-
-    <button class="btn" onclick="calcEMI()">Calculate</button>
-    <div id="e_out" class="result" aria-live="polite">—</div>
-
-    <button class="btn" onclick="copyResult()" style="background:#28a745; margin-top:0.5rem;">Copy Result</button>
-    <button class="btn" onclick="toggleDark()" style="background:#555; margin-top:0.5rem;">Toggle Dark Mode</button>
   </div>
-</div>
 
-<canvas id="emiChart" class="card" style="max-width:100%; height:300px;"></canvas>
-
-<section class="card section">
-<h2>EMI Formula</h2>
-<p class="small">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where <strong>r</strong> = monthly interest rate, <strong>n</strong> = number of months.</p>
-</section>
+  <section class="card section">
+    <h2>EMI Formula</h2>
+    <p class="small">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where <strong>r</strong> = monthly interest rate, <strong>n</strong> = number of months.</p>
+  </section>
 </main>
 
 <footer class="footer">
-<div class="container">
-<p>© 2025 Multi Calculator | Designed with ♥</p>
-<div class="footer-links">
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="privacy.html">Privacy</a>
-<a href="sitemap.xml">Sitemap</a>
-</div>
-</div>
+  <div class="container">
+    <p>© 2025 Multi Calculator | Designed with ♥</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </div>
+  </div>
 </footer>
 
-<script>
-let emiChart;
-
-function calcEMI(){
-    let P=parseFloat(document.getElementById('e_principal').value);
-    let R=parseFloat(document.getElementById('e_rate').value);
-    let N=parseInt(document.getElementById('e_months').value);
-
-    if(P<=0||R<=0||N<=0){ alert("Enter valid positive numbers!"); return; }
-
-    let r=R/12/100;
-    let emi=P*r*Math.pow(1+r,N)/(Math.pow(1+r,N)-1);
-
-    // Smooth count-up animation
-    let out=document.getElementById('e_out');
-    let current=0;
-    let step=emi/50;
-    out.textContent="₹ 0.00";
-    let interval=setInterval(()=>{
-        current+=step;
-        if(current>=emi){ current=emi; clearInterval(interval); }
-        out.textContent="₹ "+current.toFixed(2);
-    },10);
-
-    // Chart: Principal vs Interest
-    let totalPayment = emi*N;
-    let totalInterest = totalPayment - P;
-    const ctx = document.getElementById('emiChart').getContext('2d');
-
-    if(emiChart) emiChart.destroy();
-
-    emiChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Principal', 'Interest'],
-            datasets: [{
-                data: [P, totalInterest],
-                backgroundColor: ['#0f52ba','#ffa500'],
-                borderWidth:1
-            }]
-        },
-        options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
-    });
-}
-
-function copyResult(){
-    let result=document.getElementById('e_out').textContent;
-    if(result!=="—"){ navigator.clipboard.writeText(result).then(()=>alert("Copied: "+result)); }
-}
-
-function toggleDark(){ document.body.classList.toggle('dark'); }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

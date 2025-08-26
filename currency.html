@@ -1,109 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Currency Converter (Demo) • Multi Calculator Pro</title>
-  <meta name="description" content="Quickly convert between INR, USD, EUR, GBP using sample rates." />
-  <link rel="canonical" href="/calculators/currency.html" />
-
-  <!-- Open Graph / SEO -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Currency Converter (Demo) • Multi Calculator Pro" />
-  <meta property="og:description" content="Quickly convert between INR, USD, EUR, GBP using sample rates." />
-  <meta property="og:url" content="/calculators/currency.html" />
-  <meta property="og:image" content="/assets/og-default.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Currency Converter (Demo) • Multi Calculator Pro">
-  <meta name="twitter:description" content="Quickly convert between INR, USD, EUR, GBP using sample rates.">
-  <meta name="twitter:image" content="/assets/og-default.png">
-
-  <!-- Search Console Verify (replace content with your code) -->
-  <meta name="google-site-verification" content="XYZ123abc456-verify-code" />
-
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <script defer src="/assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <meta name="description" content="Currency Converter - Convert money with simple rate input">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
 <body>
-<header class="container header">
-  <a class="brand" href="/">Multi Calculator Pro</a>
-  <nav class="nav">
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/privacy.html">Privacy</a>
-    <a href="/terms.html">Terms</a>
-    <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
-  </nav>
-</header>
-<main class="container">
+  <header>
+    <div class="container">
+      <h1>Currency Converter</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="darkModeToggle">🌙</button>
+    </div>
+  </header>
 
-<section class="form">
-  <h2>Currency Converter (Demo)</h2>
-  <p class="small">Quickly convert between INR, USD, EUR, GBP using sample rates.</p>
-  
-<div class="field"><label>Amount</label><input id="amt" type="number" value="100"></div>
-<div class="field"><label>From</label>
-<select id="from">
-  <option value="INR">INR</option><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option>
-</select></div>
-<div class="field"><label>To</label>
-<select id="to">
-  <option value="USD">USD</option><option value="INR">INR</option><option value="EUR">EUR</option><option value="GBP">GBP</option>
-</select></div>
-<p class="small">Demo uses static sample rates (update via API later).</p>
-<button class="primary" onclick="conv()">Convert</button>
-<div class="result" id="out"></div>
+  <main>
+    <section class="hero">
+      <h2>Convert Currency</h2>
+      <div class="calc-box">
+        <label>Amount:</label>
+        <input type="number" id="currencyAmount" placeholder="Enter amount">
 
-  <div class="actions">
-    <button class="secondary" id="copyBtn">Copy Result</button>
-    <button class="secondary" id="shareBtn">Share</button>
-  </div>
-</section>
-<script>
+        <label>Conversion Rate:</label>
+        <input type="number" id="currencyRate" placeholder="Enter conversion rate">
 
-const rateINR = { USD: 84.0, EUR: 92.0, GBP: 108.0, INR: 1 };
-function toINR(amount, cur){ return amount * rateINR[cur]; }
-function fromINR(amount, cur){ return amount / rateINR[cur]; }
-function conv(){
-  const a = parseFloat(document.getElementById('amt').value);
-  const f = document.getElementById('from').value;
-  const t = document.getElementById('to').value;
-  const inr = toINR(a, f);
-  const out = fromINR(inr, t);
-  document.getElementById('out').innerText = `${a} ${f} ≈ ${out.toFixed(2)} ${t}`;
-}
+        <button onclick="convertCurrency()" class="btn">Convert</button>
+        <p id="currencyResult"></p>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p>© 2025 Multi Calculator. All rights reserved.</p>
+  </footer>
 
-const copyEl = document.getElementById('copyBtn');
-const shareEl = document.getElementById('shareBtn');
-function extractResult(){
-  const out = document.querySelector('.result');
-  return out ? out.innerText.trim() : '';
-}
-if(copyEl) copyEl.addEventListener('click', ()=> copyToClipboard(extractResult()));
-if(shareEl) shareEl.addEventListener('click', ()=> shareText(extractResult()));
-</script>
-
-</main>
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 Multi Calculator Pro</p>
-    <p><a href="/sitemap.xml">Sitemap</a> · <a href="/robots.txt">Robots</a></p>
-  </div>
-</footer>
-
-<!-- Google Analytics (replace G-XXXXXXX with your ID) -->
-<script>
-  // GA4 placeholder – replace 'G-XXXXXXX' with your Measurement ID
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXX');
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/calculators.js"></script>
 </body>
 </html>

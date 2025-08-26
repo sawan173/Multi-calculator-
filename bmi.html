@@ -1,20 +1,23 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="PASTE_YOUR_GSC_CODE_HERE">
+
+<!-- SEO Tags -->
+<title>BMI Calculator – Multi Calculator Pro</title>
+<meta name="description" content="Calculate your Body Mass Index (BMI) quickly and accurately using Multi Calculator Pro. Enter your weight and height to find your BMI and category.">
+<meta name="keywords" content="BMI calculator, body mass index, health calculator">
 <link rel="canonical" href="https://sawan173.github.io/Multi-calculator-/bmi.html">
+
+<!-- Stylesheet & Fonts -->
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<title>Multi Calculator — All Tools in One</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-</head><body>
+
+</head>
+<body>
+
 <header class="topbar">
   <a class="brand" href="index.html"><i class="fa-solid fa-calculator"></i> Multi <strong>Calculator</strong></a>
   <nav class="mainnav">
@@ -28,27 +31,67 @@
     <a href="cgpa.html"><i class="fa-solid fa-graduation-cap"></i><span>CGPA</span></a>
   </nav>
 </header>
+
 <main class="container">
 
-<h2>BMI Calculator</h2>
-<div class="card"><div class="form">
-  <input id="b_weight" class="input" type="number" placeholder="Weight (kg)">
-  <input id="b_height" class="input" type="number" placeholder="Height (cm)">
-  <button class="btn" onclick="calcBMI()">Calculate</button>
-  <div id="b_out" class="result">—</div>
-</div></div>
-<section class="card section"><h3>About BMI</h3><p class="small">BMI = weight(kg) ÷ height(m)². Categories: &lt;18.5 Underweight, 18.5–24.9 Normal, 25–29.9 Overweight, ≥30 Obese.</p></section>
+<!-- Hero Section -->
+<section class="hero" style="text-align:center; padding:40px 20px;">
+  <h1 style="font-size:2.5rem;">BMI Calculator</h1>
+  <p style="font-size:1.1rem; color:#555;">Calculate your Body Mass Index quickly by entering your weight and height.</p>
+</section>
+
+<!-- Calculator Card -->
+<section class="grid">
+  <div class="card calculator-card" style="padding:30px; max-width:450px; margin:auto;">
+    <form id="bmiForm" class="calculator-form">
+      <div class="form-group" style="margin-bottom:15px;">
+        <label for="b_weight">Weight (kg)</label>
+        <input id="b_weight" type="number" placeholder="0" required class="input-field" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;">
+      </div>
+      <div class="form-group" style="margin-bottom:20px;">
+        <label for="b_height">Height (cm)</label>
+        <input id="b_height" type="number" placeholder="0" required class="input-field" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;">
+      </div>
+      <button type="submit" class="btn" style="width:100%; padding:12px; border-radius:8px; background:#ffcc00; border:none; font-weight:bold; cursor:pointer; font-size:1rem;">Calculate</button>
+    </form>
+    <div id="b_out" class="card calculator-result" style="margin-top:20px; padding:15px; border-radius:8px; background:#f8f8f8; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center; font-weight:bold; font-size:1.2rem;">—</div>
+  </div>
+</section>
+
+<!-- About BMI -->
+<section class="card section" style="max-width:450px; margin:20px auto; padding:20px;">
+  <h3>About BMI</h3>
+  <p class="small">BMI = weight(kg) ÷ height(m)². Categories: &lt;18.5 Underweight, 18.5–24.9 Normal, 25–29.9 Overweight, ≥30 Obese.</p>
+</section>
+
 </main>
-<footer class="footer">
-  <div class="container">
+
+<footer class="footer" style="padding:20px 0; background:#222; color:#fff;">
+  <div class="container" style="text-align:center;">
     <p>© 2025 Multi Calculator | Designed with ♥</p>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="sitemap.xml">Sitemap</a>
+    <div class="footer-links" style="margin-top:10px;">
+      <a href="about.html" style="color:#fff; margin:0 10px;">About</a>
+      <a href="contact.html" style="color:#fff; margin:0 10px;">Contact</a>
+      <a href="privacy.html" style="color:#fff; margin:0 10px;">Privacy</a>
+      <a href="sitemap.xml" style="color:#fff; margin:0 10px;">Sitemap</a>
     </div>
   </div>
 </footer>
-<script src="script.js"></script>
-</body></html>
+
+<!-- JavaScript for BMI Calculation -->
+<script>
+document.getElementById("bmiForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  let weight = parseFloat(document.getElementById("b_weight").value);
+  let height = parseFloat(document.getElementById("b_height").value)/100; // cm to meters
+  if(weight <= 0 || height <= 0){
+    document.getElementById("b_out").innerHTML = "Please enter valid positive values.";
+    return;
+  }
+  let bmi = (weight / (height * height)).toFixed(2);
+  document.getElementById("b_out").innerHTML = `Your BMI is: <strong>${bmi}</strong>`;
+});
+</script>
+
+</body>
+</html>

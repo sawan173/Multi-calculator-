@@ -1,12 +1,19 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EMI Calculator - Calculate your monthly loan payments instantly. Easy and fast EMI calculation for loans, interest, and tenure.">
+<meta name="keywords" content="EMI calculator, loan calculator, monthly EMI, interest calculator, multi calculator">
 <meta name="google-site-verification" content="PASTE_YOUR_GSC_CODE_HERE">
 <link rel="canonical" href="https://sawan173.github.io/Multi-calculator-/emi.html">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<title>Multi Calculator — All Tools in One</title>
+
+<title>EMI Calculator — Multi Calculator</title>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,13 +21,14 @@
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
-</head><body>
+</head>
+<body>
 <header class="topbar">
   <a class="brand" href="index.html"><i class="fa-solid fa-calculator"></i> Multi <strong>Calculator</strong></a>
   <nav class="mainnav">
     <a href="percentage.html"><i class="fa-solid fa-percent"></i><span>Percentage</span></a>
     <a href="bmi.html"><i class="fa-solid fa-heart-pulse"></i><span>BMI</span></a>
-    <a href="emi.html"><i class="fa-solid fa-coins"></i><span>EMI</span></a>
+    <a href="emi.html" class="active"><i class="fa-solid fa-coins"></i><span>EMI</span></a>
     <a href="age.html"><i class="fa-solid fa-user-clock"></i><span>Age</span></a>
     <a href="discount.html"><i class="fa-solid fa-tags"></i><span>Discount</span></a>
     <a href="gst.html"><i class="fa-solid fa-file-invoice-dollar"></i><span>GST</span></a>
@@ -28,18 +36,26 @@
     <a href="cgpa.html"><i class="fa-solid fa-graduation-cap"></i><span>CGPA</span></a>
   </nav>
 </header>
-<main class="container">
 
-<h2>EMI Calculator</h2>
-<div class="card"><div class="form">
-  <input id="e_principal" class="input" type="number" placeholder="Loan Amount">
-  <input id="e_rate" class="input" type="number" placeholder="Annual Interest %">
-  <input id="e_months" class="input" type="number" placeholder="Tenure (months)">
-  <button class="btn" onclick="calcEMI()">Calculate</button>
-  <div id="e_out" class="result">—</div>
-</div></div>
-<section class="card section"><h3>Formula</h3><p class="small">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r = monthly rate, n = number of months.</p></section>
+<main class="container">
+  <h1>EMI Calculator</h1>
+
+  <div class="card emi-card">
+    <div class="form">
+      <input id="e_principal" class="input" type="number" placeholder="Loan Amount" aria-label="Loan Amount">
+      <input id="e_rate" class="input" type="number" placeholder="Annual Interest %" aria-label="Annual Interest Percentage">
+      <input id="e_months" class="input" type="number" placeholder="Tenure (months)" aria-label="Loan Tenure in Months">
+      <button class="btn" onclick="calcEMI()">Calculate</button>
+      <div id="e_out" class="result" aria-live="polite">—</div>
+    </div>
+  </div>
+
+  <section class="card section">
+    <h2>EMI Formula</h2>
+    <p class="small">EMI = P × r × (1+r)^n / ((1+r)^n − 1), where <strong>r</strong> = monthly interest rate, <strong>n</strong> = number of months.</p>
+  </section>
 </main>
+
 <footer class="footer">
   <div class="container">
     <p>© 2025 Multi Calculator | Designed with ♥</p>
@@ -51,5 +67,7 @@
     </div>
   </div>
 </footer>
+
 <script src="script.js"></script>
-</body></html>
+</body>
+</html>
